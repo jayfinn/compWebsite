@@ -2,7 +2,7 @@ application: compwebsite
 version: 1
 runtime: python27
 api_version: 1
-threadsafe: yes
+threadsafe: false
 
 handlers:
 - url: /favicon\.ico
@@ -10,7 +10,7 @@ handlers:
   upload: favicon\.ico
 
 - url: /.*
-  script: compwebsite.app
+  script: compwebsite.py
 
 libraries:
 - name: webapp2
