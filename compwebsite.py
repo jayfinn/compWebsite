@@ -32,7 +32,7 @@ class MainPage(webapp2.RequestHandler):
     greetings = db.GqlQuery("SELECT * "
                             "FROM Greeting "
                             "WHERE ANCESTOR IS :1 "
-                            "ORDER BY date DESC LIMIT 10",
+                             "ORDER BY date DESC LIMIT 10",
                             guestbook_key(guestbook_name))
 
     for greeting in greetings:

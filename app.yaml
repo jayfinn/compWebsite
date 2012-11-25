@@ -5,12 +5,15 @@ api_version: 1
 threadsafe: false
 
 handlers:
+
 - url: /favicon\.ico
   static_files: favicon.ico
   upload: favicon\.ico
 
+
 - url: /.*
-  script: compwebsite.py
+  script: compwebsite.app
+
 
 libraries:
 - name: webapp2
