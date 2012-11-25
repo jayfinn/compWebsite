@@ -12,6 +12,7 @@ class Person(db.Model):
   last_name = db.StringProperty()
   email = db.EmailProperty()
   phone = db.PhoneNumberProperty()
+  room = db.StringProperty()
 
 def userbook_key(userbook_name=None):
     return db.Key.from_path('Userbook', userbook_name or 'default_userbook')
@@ -37,7 +38,7 @@ class MainPage(webapp2.RequestHandler):
 
     for person in persons:
       if person.first_name:
-        self.response.out.write('<p>%s %s is in the data base. Email: %s. Phone Number: %s.</p>\n' % (person.first_name, person.last_name, person.email, person.phone))
+        self.response.out.write('<p>%s %s is in the data base. Email: %s. Phone Number: %s.</p>\n' % (person.first_name, person.last_name, person.email, person.phone, person.room))
      
         
     self.response.out.write("""
@@ -47,9 +48,11 @@ class MainPage(webapp2.RequestHandler):
              <p>Last Name:</p>
              <div><textarea name="last_name" rows="1" cols="40"></textarea></div>
              <p>Email: </p>
-             <div><textarea name="email" rows="1" cols=40"></textarea></div>
+             <div><textarea name="email" rows="1" cols="40"></textarea></div>
              <p>Phone Number:</p>
-             <div><textarea name="phone" rows="1" cols=40"></textarea></div>
+             <div><textarea name="phone" rows="1" cols="40"></textarea></div>
+             <p>Dorm Address:</p>
+             <div><textarea name="room" rows="1" cols="40"></textarea></div>
              <div><input type="submit" value="Register User"></div>
            </form>
            <hr>
@@ -68,6 +71,7 @@ class Userbook(webapp2.RequestHandler):
     person.last_name = self.request.get('last_name')
     person.email = self.request.get('email')
     person.phone = self.request.get('phone')
+    person.room = self.request.get('room')
     person.put()
     self.redirect('/?' + urllib.urlencode({'userbook_name': userbook_name}))
 
