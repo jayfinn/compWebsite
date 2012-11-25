@@ -6,74 +6,73 @@ import webapp2
 from google.appengine.ext import db
 from google.appengine.api import users
 
+class Person(db.Model):
+  """Models an individual Person entry with a first name, last name, email address, and phone number"""
+  first_name = db.StringProperty()
+  last_name = db.StringProperty()
+  email = db.EmailProperty()
+  phone = db.PhoneNumberProperty()
 
-class Greeting(db.Model):
-  """Models an individual Guestbook entry with an author, content, and date."""
-  author = db.StringProperty()
-  content = db.StringProperty(multiline=True)
-  date = db.DateTimeProperty(auto_now_add=True)
-
-
-def guestbook_key(guestbook_name=None):
-  """Constructs a Datastore key for a Guestbook entity with guestbook_name."""
-  return db.Key.from_path('Guestbook', guestbook_name or 'default_guestbook')
+def userbook_key(userbook_name=None):
+    return db.Key.from_path('Userbook', userbook_name or 'default_userbook')
 
 
 class MainPage(webapp2.RequestHandler):
   def get(self):
     self.response.out.write('<html><body>')
-    guestbook_name=self.request.get('guestbook_name')
+    userbook_name=self.request.get('userbook_name')
 
     # Ancestor Queries, as shown here, are strongly consistent with the High
     # Replication Datastore. Queries that span entity groups are eventually
     # consistent. If we omitted the ancestor from this query there would be a
     # slight chance that greeting that had just been written would not show up
     # in a query.
-    greetings = db.GqlQuery("SELECT * "
-                            "FROM Greeting "
-                            "WHERE ANCESTOR IS :1 "
-                             "ORDER BY date DESC LIMIT 10",
-                            guestbook_key(guestbook_name))
+   
 
-    for greeting in greetings:
-      if greeting.author:
-        self.response.out.write(
-            '<b>%s</b> wrote:' % greeting.author)
-      else:
-        self.response.out.write('An anonymous person wrote:')
-      self.response.out.write('<blockquote>%s</blockquote>' %
-                              cgi.escape(greeting.content))
+    persons = db.GqlQuery("SELECT * "
+                          "FROM Person "
+                          "WHERE ANCESTOR IS :1 "
+                          "ORDER BY last_name ASC LIMIT 10",
+                          userbook_key(userbook_name))
 
+    for person in persons:
+      if person.first_name:
+        self.response.out.write('<p>%s %s is in the data base. Email: %s. Phone Number: %s.</p>\n' % (person.first_name, person.last_name, person.email, person.phone))
+     
+        
     self.response.out.write("""
-          <form action="/sign?%s" method="post">
-            <div><textarea name="content" rows="3" cols="60"></textarea></div>
-            <div><input type="submit" value="Sign Guestbook"></div>
-          </form>
-          <hr>
-          <form>Guestbook name: <input value="%s" name="guestbook_name">
-          <input type="submit" value="switch"></form>
+           <form action="/sign?%s" method="post">
+             <p>First Name:</p>
+             <div><textarea name="first_name" rows="1" cols="40"></textarea></div>
+             <p>Last Name:</p>
+             <div><textarea name="last_name" rows="1" cols="40"></textarea></div>
+             <p>Email: </p>
+             <div><textarea name="email" rows="1" cols=40"></textarea></div>
+             <p>Phone Number:</p>
+             <div><textarea name="phone" rows="1" cols=40"></textarea></div>
+             <div><input type="submit" value="Register User"></div>
+           </form>
+           <hr>
+           <form><input value="%s" name="userbook_name"></form>
         </body>
-      </html>""" % (urllib.urlencode({'guestbook_name': guestbook_name}),
-                          cgi.escape(guestbook_name)))
+    </html>""" % (urllib.urlencode({'userbook_name': userbook_name}),
+                          cgi.escape(userbook_name)))
 
 
-class Guestbook(webapp2.RequestHandler):
+class Userbook(webapp2.RequestHandler):
   def post(self):
-    # We set the same parent key on the 'Greeting' to ensure each greeting is in
-    # the same entity group. Queries across the single entity group will be
-    # consistent. However, the write rate to a single entity group should
-    # be limited to ~1/second.
-    guestbook_name = self.request.get('guestbook_name')
-    greeting = Greeting(parent=guestbook_key(guestbook_name))
+    userbook_name=self.request.get('userbook_name')  
+    person = Person(parent=userbook_key(userbook_name))
 
-    if users.get_current_user():
-      greeting.author = users.get_current_user().nickname()
+    person.first_name = self.request.get('first_name')
+    person.last_name = self.request.get('last_name')
+    person.email = self.request.get('email')
+    person.phone = self.request.get('phone')
+    person.put()
+    self.redirect('/?' + urllib.urlencode({'userbook_name': userbook_name}))
 
-    greeting.content = self.request.get('content')
-    greeting.put()
-    self.redirect('/?' + urllib.urlencode({'guestbook_name': guestbook_name}))
 
 
 app = webapp2.WSGIApplication([('/', MainPage),
-                               ('/sign', Guestbook)],
+                               ('/sign', Userbook)],
                               debug=True)
