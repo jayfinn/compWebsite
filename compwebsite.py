@@ -34,6 +34,7 @@ class MainPage(webapp2.RequestHandler):
     for person in persons:
       if person.first_name:
         self.response.out.write('<p>%s %s is in the data base. Email: %s. Phone Number: %s. Dorm Room: %s</p>\n' % (person.first_name, person.last_name, person.email, person.phone, person.room))
+        self.response.out.write('<p>%s was registered at %s' % (person.first_name, person.date))
      
     if users.get_current_user():
       url = users.create_logout_url(self.request.uri)
