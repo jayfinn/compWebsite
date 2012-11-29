@@ -21,6 +21,12 @@ import os
 import pytz
 os.environ['DJANGO_SETTINGS_MODULE'] = 'settings'
 
+from pytz.gae import pytz
+from datetime import datetime, timedelta
+from pytz import timezone
+
+eastern = pytz.timezone('US/Eastern')
+
 from google.appengine.dist import use_library
 use_library('django', '1.2')
 
@@ -31,7 +37,7 @@ from google.appengine.ext.webapp import template
 from google.appengine.ext.webapp import util
 
 from comp import reqs
-from util import Eastern
+#from util import Eastern
 
 class Advertising:
     # required ad sales
@@ -187,9 +193,9 @@ class Events(webapp.RequestHandler):
                 events = db.GqlQuery("SELECT * FROM Event WHERE user = :1 ORDER BY submit_date ASC", user)
                 for event in events:
                     if event.submit_date:
-                        event.submit_date = event.submit_date.replace(tzinfo=pytz.utc).astimezone(Eastern)
+                        event.submit_date = event.submit_date.replace(tzinfo=pytz.utc).astimezone(eastern)
                     if event.verify_date:
-                        event.verify_date = event.verify_date.replace(tzinfo=pytz.utc).astimezone(Eastern)                   
+                        event.verify_date = event.verify_date.replace(tzinfo=pytz.utc).astimezone(eastern)                   
                     
                     i = 0
 
@@ -714,9 +720,9 @@ class EventFeed(webapp.RequestHandler):
                     for event in events_list:
                         
                         if event.submit_date:
-                            event.submit_date = event.submit_date.replace(tzinfo=pytz.utc).astimezone(Eastern)
+                            event.submit_date = event.submit_date.replace(tzinfo=pytz.utc).astimezone(eastern)
                         if event.verify_date:
-                            event.verify_date = event.verify_date.replace(tzinfo=pytz.utc).astimezone(Eastern)
+                            event.verify_date = event.verify_date.replace(tzinfo=pytz.utc).astimezone(eastern)
                         
                         person = db.GqlQuery("SELECT * FROM UserInfo WHERE user = :1", event.user).get()
                         if person.active:
