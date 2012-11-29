@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+        <head>
+                <title>
+                        User Information
+                </title>
+                
+                <meta charset="utf-8">
+                <link rel="stylesheet" href="css/structure.css" type="text/css" />
+                <link rel="stylesheet" href="css/form.css" type="text/css" />
+                <link rel="stylesheet" href="css/navigation.css" type="text/css" />
+
+                <script src="js/info.js"></script>
+        </head>
+
+        <body id="public">
+                {{ nav|safe }}
+                <div id="container" class="ltr">
+                        <form id="form" name="form" class="wufoo topLabel page" method="post" action="/info">
+                        
+                                <header id="header" class="info">
+                                        <h1>{{ comper }}</h1>
+                                        
+                                        <h2>User Information</h2>
+        
+                                        <div>
+                                                Please fill out your information. All fields are required.
+                                                <br/>
+                                                <br/>
+                                                Email will be sent to the address provided.
+                                                <br/>
+                                                Phone numbers will be used only in case of emergencies.
+                                                <br/>
+                                                <br/>
+                                                Don't mess this up.
+                                        </div>
+                                </header>
+                                
+                                <ul>
+                                        <li class="">
+                                                <label class="desc" for="name">
+                                                        First and Last Name
+                                                        <span class="req">*</span>
+                                                        <!-- {% if name %}{{ name }}{% endif %}  -->
+                                                </label>
+                                                <div>
+                                                        <input id="name" name="name" type="text" class="field text medium" value="{% if name %}{{ name }}{% endif %}" maxlength="255" tabindex="1" onkeyup="" required />
+                                                </div>
+                                        </li>
+                                        
+                                        <li class="">
+                                                <label class="desc" for="email">
+                                                        Email
+                                                        <span class="req">*</span>
+                                                        <!-- {% if email %}{{ email }}{% endif %}  -->
+                                                </label>
+                                                <div>
+                                                        <input id="email" name="email" type="email" spellcheck="false" class="field text medium" value="{% if email %}{{ email }}{% endif %}" maxlength="255" tabindex="2" required /> 
+                                                </div>
+                                        </li>
+                                        
+                                        <li class="phone">
+                                                <label class="desc" for="phone">
+                                                        Phone Number
+                                                        <span class="req">*</span>
+                                                        <!-- {% if phone %}{{ phone }}{% endif %}  -->
+                                                </label>
+                                                
+                                                <span>
+                                                        <input id="phone-0" name="phone-0" type="tel" class="field text" value="{% if phone0 %}{{ phone0 }}{% endif %}" size="3" maxlength="3" tabindex="3" required />
+                                                        <!--
+                                                        <label for="phone-0">###</label>
+                                                        -->
+                                                </span>
+                                                <span class="symbol">-</span>
+                                                <span>
+                                                        <input id="phone-1" name="phone-1" type="tel" class="field text" value="{% if phone1 %}{{ phone1 }}{% endif %}" size="3" maxlength="3" tabindex="4" required />
+                                                        <!-- 
+                                                        <label for="phone-1">###</label>
+                                                        -->
+                                                </span>
+                                                <span class="symbol">-</span>
+                                                <span>
+                                                        <input id="phone-2" name="phone-2" type="tel" class="field text" value="{% if phone2 %}{{ phone2 }}{% endif %}" size="4" maxlength="4" tabindex="5" required />
+                                                        <!--
+                                                        <label for="phone-2">####</label>
+                                                        -->
+                                                </span>
+                                        </li>
+                                        
+                                        <li class="">
+                                                <fieldset>
+                                                        <legend id="title6" class="desc">
+                                                                Year
+                                                                <span class="req">*</span>
+                                                                <!-- {% if year %}{{ year }}{% endif %}  -->
+                                                        </legend>
+                                                        <div>
+                                                                <span>
+                                                                        <input id="year_0" name="year" type="radio" class="field radio" value="1" tabindex="6" {% if year %}{% ifequal year 'Freshman' %}checked{% endifequal %}{% endif %} required />
+                                                                        <label class="choice" for="year_0" >
+                                                                                Freshman
+                                                                        </label>
+                                                                </span>
+                                                                <span>
+                                                                        <input id="year_1" name="year" type="radio" class="field radio" value="2" tabindex="7" {% if year %}{% ifequal year 'Sophomore' %}checked{% endifequal %}{% endif %} required />
+                                                                        <label class="choice" for="year_1" >
+                                                                                Sophomore
+                                                                        </label>
+                                                                </span>
+                                                                <span>
+                                                                        <input id="year_2" name="year" type="radio" class="field radio" value="3" tabindex="8" {% if year %}{% ifequal year 'Junior' %}checked{% endifequal %}{% endif %} required />
+                                                                        <label class="choice" for="year_2" >
+                                                                                Junior
+                                                                        </label>
+                                                                </span>
+                                                                <span>
+                                                                        <input id="year_3" name="year" type="radio" class="field radio" value="4" tabindex="9" {% if year %}{% ifequal year 'Senior' %}checked{% endifequal %}{% endif %} required />
+                                                                        <label class="choice" for="year_3" >
+                                                                                Senior
+                                                                        </label>
+                                                                </span>
+                                                        </div>
+                                                </fieldset>
+                                        </li>
+                                        
+                                        <li class="">
+                                                <label class="desc" id="title14" for="house">
+                                                        Dorm/House and Room
+                                                        <span id="req_14" class="req">*</span>
+                                                        <!-- {% if house %}{{ house }}{% endif %}   -->
+                                                </label>
+                                                <div>
+                                                        <input id="house" name="house" type="text" class="field text medium" value="{% if house %}{{ house }}{% endif %}" maxlength="255" tabindex="10" onkeyup="" required />
+                                                </div>
+                                        </li>
+                                        
+                                        <li class="">
+                                                <label class="desc" id="title14" for="pw">
+                                                        Registration Password
+                                                </label>
+                                                <div>
+                                                        <input id="pw" name="pw" type="password" class="field text medium" value="" maxlength="255" tabindex="11" onkeyup=""/>
+                                                </div>
+                                        </li>
+                                        
+                                        <li class="buttons">
+                                                <div>
+                                                        <input id="saveForm" name="saveForm" class="btTxt submit" type="submit" value="Submit" />
+                                                </div>
+                                        </li>
+                                
+                                </ul>
+                        </form> 
+                </div>
+        </body>
+</html>

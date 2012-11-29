@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html class="">
+        <head>
+                <title>Approval Feed</title>
+                <meta charset="utf-8">
+        
+                <link rel="stylesheet" href="css/overlay-structure.css" type="text/css" />
+                <link rel="stylesheet" href="css/overlay-form.css" type="text/css" />
+                <link rel="stylesheet" href="css/reqs.css" type="text/css" />
+                <link rel="stylesheet" href="css/navigation.css" type="text/css" />
+
+                <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script>
+                <script type="text/javascript" src="js/jquery.tools.min.js"></script>
+                <script type="text/javascript" src="js/form.js"></script>
+        </head>
+
+<body id="report" class="wufoo layout3">
+
+{{ nav|safe }}
+<div id="container" class="ltr">
+
+<header id="header" class="info">
+        <h2>Approval Feed</h2>
+        <div>Slay some newbs.</div>
+</header>
+<form method="post" action="/approve">  
+        <div id="stage" class="clearfix">
+                <div id="z0" class="zone clearfix">
+                        <div class="wfo_widget fc">
+                                <table cellspacing="0" class="choices">
+                                        <thead>
+                                                <tr>
+                                                        <th class="count">Comper</th>
+                                                        <th class="count">Requirement</th>
+                                                        <th class="count">Date Submitted</th>
+                                                        <th class="count">
+                                                                <input class="btTxt submit" type="submit" name="submit" value="Approve" />
+                                                                &nbsp;
+                                                                <input class="btTxt submit" type="submit" name="submit" value="Deny" />
+                                                        </th>
+                                                </tr>
+                                        </thead>
+                                        {% for event in events %}
+                                        <tbody>
+                                                <tr class="color1">
+                                                        <td class="count">
+                                                                <div>{{ event.username }}</div>
+                                                        </td>
+                                                        <td class="count">
+                                                                <div>{{ event.type }}</div>
+                                                        </td>
+                                                        <td class="count">
+                                                                <div>{{ event.obj.submit_date }}</div>
+                                                        </td>
+                                                        <td class="count">
+                                                                        <input name="event_key" value="{{ event.obj.key }}" type="checkbox"/>
+                                                        </td>
+                                                </tr>
+                                        </tbody>
+                                        {% endfor %}
+                                </table>
+                        </div>
+                </div>
+        </div>
+</form>
+</div><!--container-->
+
+</body>
+</html>

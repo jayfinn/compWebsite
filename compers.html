@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html class="">
+        <head>
+                <title>Compers</title>
+                <meta charset="utf-8">
+        
+                <link rel="stylesheet" href="css/overlay-structure.css" type="text/css" />
+                <link rel="stylesheet" href="css/overlay-form.css" type="text/css" />
+                <link rel="stylesheet" href="css/compers.css" type="text/css" />
+                <link rel="stylesheet" href="css/navigation.css" type="text/css" />
+
+                <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script>
+                <script type="text/javascript" src="js/jquery.tools.min.js"></script>
+                <script type="text/javascript" src="js/form.js"></script>
+        </head>
+
+<body id="report" class="wufoo layout3">
+
+{{ nav|safe }}
+<div id="container" class="ltr">
+
+<header id="header" class="info">
+        <h2>Compers</h2>
+        <div>Meet the crew.</div>
+</header>
+
+<div id="board-navigation" style="display:none">
+        <table class="pgStyle1 circle5" cellspacing="0">
+                <tr>
+                        <td class="c">
+                                <var>1</var>
+                        </td>
+                        <td class="t">
+                                <b id="pagecircle1">General</b>
+                        </td>
+                        <td class="c selected">
+                                <var>2</var>
+                        </td>
+                        <td class="t">
+                                <b id="pagecircle2">Advertising</b>
+                        </td>
+                        <td class="c ">
+                                <var>3</var>
+                        </td>
+                        <td class="t">
+                                <b id="pagecircle3">Circulation & Marketing</b>
+                        </td>
+                        <td class="c ">
+                                <var>4</var>
+                        </td>
+                        <td class="t">
+                                <b id="pagecircle4">Contract Printing</b>
+                        </td>
+                        <td class="c ">
+                                <var>5</var>
+                        </td>
+                        <td class="t">
+                                <b id="pagecircle5">Operations</b>
+                        </td>
+                </tr>
+        </table>
+</div>
+
+<form id="form4" name="form4" class="wufoo topLabel page" method="post">
+<div id="event_container" style="text-align:center">
+        <div style="display: inline-block">
+        {% for user in active %}
+        <div class="wfo_widget wfo_number">
+                <var class="color1">{{ user.info.name }}</var>
+                <ul>
+                        <li>
+                                <strong>{{ user.year }}</strong>
+                        </li>
+                        <li>
+                                <strong>{{ user.info.house }}</strong>
+                        </li>
+                        <li>
+                                Email:
+                        </li>
+                        <li>
+                                {{ user.info.email }}
+                        </li>
+                        <li>
+                                Phone:
+                        </li>
+                        <li>
+                                {{ user.info.phone }}
+                        </li>
+                </ul>
+        </div>
+        {% endfor %}
+        {% for user in banned %}
+        <div class="wfo_widget wfo_number">
+                <div style="background-image: url('images/dropped-s.png')">
+                        <var class="color2">{{ user.info.name }}</var>
+                        <ul>
+                                <li>
+                                        <strong>{{ user.year }}</strong>
+                                </li>
+                                <li>
+                                        <strong>{{ user.info.house }}</strong>
+                                </li>
+                                <li>
+                                        Email:
+                                </li>
+                                <li>
+                                        {{ user.info.email }}
+                                </li>
+                                <li>
+                                        Phone:
+                                </li>
+                                <li>
+                                        {{ user.info.phone }}
+                                </li>
+                        </ul>
+                </div>
+        </div>
+        {% endfor %}
+        </div>
+</div>
+        <ul>    
+                <li class="buttons">
+                        <div>
+                                <input id="saveForm" name="saveForm" class="btTxt submit" type="hidden" value="Submit" />
+                        </div>
+                </li>
+        </ul>
+</form> 
+
+</div><!--container-->
+
+</body>
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html class="">
+        <head>
+                <title>User Access</title>
+                <meta charset="utf-8">
+        
+                <link rel="stylesheet" href="css/overlay-structure.css" type="text/css" />
+                <link rel="stylesheet" href="css/overlay-form.css" type="text/css" />
+                <link rel="stylesheet" href="css/reqs.css" type="text/css" />
+                <link rel="stylesheet" href="css/navigation.css" type="text/css" />
+
+                <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script>
+                <script type="text/javascript" src="js/jquery.tools.min.js"></script>
+                <script type="text/javascript" src="js/form.js"></script>
+        </head>
+
+<body id="report" class="wufoo layout3">
+
+{{ nav|safe }}
+<div id="container" class="ltr">
+
+<header id="header" class="info">
+        <h2>User Access</h2>
+        <div>:D</div>
+</header>
+<form method="post" action="/user-access">      
+        <div id="stage" class="clearfix">
+                <div id="z0" class="zone clearfix">
+                        <div class="wfo_widget fc">
+                                <table cellspacing="0" class="choices">
+                                        <thead>
+                                                <tr>
+                                                        <th class="count">Name</th>
+                                                        <th class="count">Comp Sheet</th>
+                                                        <th class="count">Active</th>
+                                                        <th class="count">Select</th>
+                                                </tr>
+                                        </thead>
+                                        {% for comper in compers %}
+                                        <tbody>
+                                                <tr class="color{{ comper.active }}">
+                                                        <td class="item count">
+                                                                <div>{{ comper.name }}</div>
+                                                        </td>
+                                                        <td class="item count">
+                                                                <div>
+                                                                        <a href="/view-hours?key={{ comper.key }}">Hours</a>
+                                                                        &nbsp;
+                                                                        <a href="/view-ads?key={{ comper.key }}">Ads</a>
+                                                                        &nbsp;
+                                                                        <a href="/view-reqs?key={{ comper.key }}">Reqs</a>
+                                                                </div>
+                                                        </td>
+                                                        <td class="item count">
+                                                                <div>{{ comper.active }}</div>
+                                                        </td>
+                                                        <td class="item count">
+                                                                <input name="comper_key" value="{{ comper.key }}" type="checkbox"/>
+                                                        </td>
+                                                </tr>
+                                        </tbody>
+                                        {% endfor %}
+                                </table>
+                        </div>
+                </div>
+                <ul>
+                        <li class="">
+                                <label class="desc" for="pw">
+                                        Re-enter Admin Password
+                                </label>
+                                <div>
+                                        <input id="pw" name="pw" type="password" class="field text medium" value="" maxlength="255" tabindex="11" onkeyup="" required/>
+                                </div>
+                        </li>
+                        <li class="">
+                                <label class="desc">
+                                        Change User Access
+                                </label>
+                                <input class="btTxt submit" type="submit" name="submit" value="Drop" />
+                                &nbsp;
+                                <input class="btTxt submit" type="submit" name="submit" value="Recover" />
+                                &nbsp;
+                                <input class="btTxt submit" type="submit" name="submit" value="Delete" disabled="disabled" />
+                        </li>
+                </ul>
+        </div>
+</form>
+</div><!--container-->
+
+</body>
+</html>

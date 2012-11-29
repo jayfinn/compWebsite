@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html class="">
+        <head>
+                <title>Advertisements</title>
+                <meta charset="utf-8">
+        
+                <link rel="stylesheet" href="css/overlay-structure.css" type="text/css" />
+                <link rel="stylesheet" href="css/overlay-form.css" type="text/css" />
+                <link rel="stylesheet" href="css/ads.css" type="text/css" />
+                <link rel="stylesheet" href="css/navigation.css" type="text/css" />
+
+                <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script>
+                <script type="text/javascript" src="js/jquery.tools.min.js"></script>
+                <script type="text/javascript" src="js/form.js"></script>
+                <script type="text/javascript" src="js/sold.js"></script>
+        </head>
+
+<body id="report" class="wufoo layout1">
+
+{{ nav|safe }}
+<div id="container">
+        <div id="addCol" class="addAd" rel="#input_ad">
+                <a class="plus">+</a>
+        </div>
+        <header id="header" class="info">
+                <div class="buttons"></div>
+                <h2 class="notranslate">Advertisements Sold</h2>
+                <div class="notranslate">Press the green + on the top right to log an ad sale.</div>
+        </header>
+        
+        <div id="board-navigation" style="display:none">
+                <table class="pgStyle1 circle3" cellspacing="0">
+                        <tr>
+                                <td class="c">
+                                        <var>1</var>
+                                </td>
+                                <td class="t">
+                                        <b id="pagecircle1">Unsolicited</b>
+                                </td>
+                                <td class="c">
+                                        <var>2</var>
+                                </td>
+                                <td class="t">
+                                        <b id="pagecircle2">Solicited</b>
+                                </td>
+                                <td class="c">
+                                        <var>3</var>
+                                </td>
+                                <td class="t">
+                                        <b id="pagecircle3">Trade</b>
+                                </td>
+                </table>
+        </div>
+        
+        <div id="stage" class="clearfix">
+                <div id="z0" class="zone clearfix">
+                        <div class="wfo_widget fc">
+                                <table cellspacing="0" class="choices">
+                                        <caption>
+                                                <h4>Unsolicited</h4>
+                                                <span class="fcNav"><a>&nbsp;</a></span>
+                                        </caption>
+                                        <thead>
+                                                <tr>
+                                                        <th>Company</th>
+                                                        <th class="percent">Description</th>
+                                                        <th class="count">Amount</th>
+                                                        <th class="count">Delete</th>
+                                                </tr>
+                                        </thead>
+                                        <tfoot>
+                                                <tr>
+                                                        <td class="empty">&nbsp;</td>
+                                                        <th>{{ adtotal.unsolicited_number }} Total</th>
+                                                        <td class="count" style="text-align: right">${{ adtotal.unsolicited_amount|floatformat:2 }}</td>
+                                                        <td class="count">*</td>
+                                                </tr>
+                                        </tfoot>
+                                        <tbody>
+                                        {% for ad in unsolicited %}
+                                                <tr class="color1">
+                                                        <th>
+                                                                <div>{{ ad.company }}</div>
+                                                        </th>
+                                                        <td class="percent">
+                                                                <div>{{ ad.description }}</div>
+                                                        </td>
+                                                        <td class="count">
+                                                                <div style="text-align: right">${{ ad.amount|floatformat:2 }}</div>
+                                                        </td>
+                                                        <td class="count">
+                                                                <form method="post" action="/delad">
+                                                                        <input name="del_key" value="{{ ad.key }}" type="hidden"/>
+                                                                        <input class="btTxt submit" type="submit" value="Delete" />
+                                                                </form>
+                                                        </td>
+                                                </tr>
+                                        {% endfor %}
+                                        </tbody>
+                                </table>
+                        </div>
+                        {% if diff.u_num %}
+                        <div class="wfo_widget wfo_number">
+                                <strong># Left</strong> 
+                                <var class="color1">{{ diff.u_num }}</var> 
+                        </div>
+                        {% endif %}
+                        {% if diff.u_amt %}
+                        <div class="wfo_widget wfo_number">
+                                <strong>$ Left</strong> 
+                                <var class="color2">${{ diff.u_amt|floatformat:2 }}</var> 
+                        </div>
+                        {% endif %}
+                </div>
+                
+                <div id="z0" class="zone clearfix">
+                        <div class="wfo_widget fc">
+                                <table cellspacing="0" class="choices">
+                                        <caption>
+                                                <h4>Solicited</h4>
+                                                <span class="fcNav"><a>&nbsp;</a></span>
+                                        </caption>
+                                        <thead>
+                                                <tr>
+                                                        <th>Company</th>
+                                                        <th class="percent">Description</th>
+                                                        <th class="count">Amount</th>
+                                                        <th class="count">Delete</th>
+                                                </tr>
+                                        </thead>
+                                        <tfoot>
+                                                <tr>
+                                                        <td class="empty">&nbsp;</td>
+                                                        <th>{{ adtotal.solicited_number }} Total</th>
+                                                        <td class="count" style="text-align: right">${{ adtotal.solicited_amount|floatformat:2 }}</td>
+                                                        <td class="count">*</td>
+                                                </tr>
+                                        </tfoot>
+                                        <tbody>
+                                        {% for ad in solicited %}
+                                                <tr class="color1">
+                                                        <th>
+                                                                <div>{{ ad.company }}</div>
+                                                        </th>
+                                                        <td class="percent">
+                                                                <div>{{ ad.description }}</div>
+                                                        </td>
+                                                        <td class="count">
+                                                                <div style="text-align: right">${{ ad.amount|floatformat:2 }}</div>
+                                                        </td>
+                                                        <td class="count">
+                                                                <div>
+                                                                        <form method="post" action="/delad">
+                                                                                <input name="del_key" value="{{ ad.key }}" type="hidden"/>
+                                                                                <input class="btTxt submit" type="submit" value="Delete" />
+                                                                        </form>
+                                                                </div>
+                                                        </td>
+                                                </tr>
+                                        {% endfor %}
+                                        </tbody>
+                                </table>
+                        </div>
+                        {% if diff.s_num %}
+                        <div class="wfo_widget wfo_number">
+                                <strong># Left</strong> 
+                                <var class="color1">{{ diff.s_num }}</var> 
+                        </div>
+                        {% endif %}
+                        {% if diff.s_amt %}
+                        <div class="wfo_widget wfo_number">
+                                <strong>$ Left</strong> 
+                                <var class="color2">${{ diff.s_amt|floatformat:2 }}</var> 
+                        </div>
+                        {% endif %}
+                </div>
+                
+                <div id="z0" class="zone clearfix">
+                        <div class="wfo_widget fc">
+                                <table cellspacing="0" class="choices">
+                                        <caption>
+                                                <h4>Trade</h4>
+                                                <span class="fcNav"><a>&nbsp;</a></span>
+                                        </caption>
+                                        <thead>
+                                                <tr>
+                                                        <th>Company</th>
+                                                        <th class="percent">Description</th>
+                                                        <th class="count">Amount</th>
+                                                        <th class="count">Delete</th>
+                                                </tr>
+                                        </thead>
+                                        <tfoot>
+                                                <tr>
+                                                        <td class="empty">&nbsp;</td>
+                                                        <th>{{ adtotal.trade_number }} Total</th>
+                                                        <td class="count" style="text-align: right">${{ adtotal.trade_amount|floatformat:2 }}</td>
+                                                        <td class="count">*</td>
+                                                </tr>
+                                        </tfoot>
+                                        <tbody>
+                                        {% for ad in trade %}
+                                                <tr class="color1">
+                                                        <th>
+                                                                <div>{{ ad.company }}</div>
+                                                        </th>
+                                                        <td class="percent">
+                                                                <div>{{ ad.description }}</div>
+                                                        </td>
+                                                        <td class="count">
+                                                                <div style="text-align: right">${{ ad.amount|floatformat:2 }}</div>
+                                                        </td>
+                                                        <td class="count">
+                                                                <div>
+                                                                        <form method="post" action="/delad">
+                                                                                <input name="del_key" value="{{ ad.key }}" type="hidden"/>
+                                                                                <input class="btTxt submit" type="submit" value="Delete" />
+                                                                        </form>
+                                                                </div>
+                                                        </td>
+                                                </tr>
+                                        {% endfor %}
+                                        </tbody>
+                                </table>
+                        </div>
+                        {% if diff.t_num %}
+                        <div class="wfo_widget wfo_number">
+                                <strong># Left</strong> 
+                                <var class="color1">{{ diff.t_num }}</var> 
+                        </div>
+                        {% endif %}
+                        {% if diff.t_amt %}
+                        <div class="wfo_widget wfo_number">
+                                <strong>$ Left</strong> 
+                                <var class="color2">${{ diff.t_amt|floatformat:2 }}</var> 
+                        </div>
+                        {% endif %}
+                </div>
+        </div><!--stage-->
+                
+</div><!--container-->
+<img id="bottom" src="/images/bottom.png" alt="" />
+
+
+        <div id="input_ad" class="simple_overlay">
+                <form id="main-form" name="form3" class="wufoo topLabel page" method="post" action="/addad">
+                        <header id="overlay-header" class="info">
+                                <h2>Congratulations!</h2>
+                                <div>You sold an ad.</div>
+                        </header>
+        
+                        <ul>
+                                <li id="foli101" class="">
+                                        <fieldset>
+                                                <div>
+                                                        <span>
+                                                                <input id="Field101_0" name="adtype" type="radio" class="field radio" value="0" tabindex="1" checked="checked" required />
+                                                                <label class="choice" for="Field101_0">Unsolicited</label>
+                                                        </span>
+                                                        <span>
+                                                                <input id="Field101_1" name="adtype" type="radio" class="field radio" value="1" tabindex="2" required />
+                                                                <label class="choice" for="Field101_1">Solicited</label>
+                                                        </span>
+                                                        <span>
+                                                                <input id="Field101_2" name="adtype" type="radio" class="field radio" value="2" tabindex="2" required />
+                                                                <label class="choice" for="Field101_2">Trade</label>
+                                                        </span>
+                                                </div>
+                                        </fieldset>
+                                </li>
+                                <li id="foli102" class="">
+                                        <label class="desc" id="title102" for="Field102">
+                                                Company Name
+                                                <span id="req_102" class="req">*</span>
+                                        </label>
+                                        <div>
+                                                <input id="Field102" name="Field102" type="text" class="field text large" value="" maxlength="255" tabindex="3" onkeyup="" required />
+                                        </div>
+                                </li>
+                                <li id="foli104" class="">
+                                        <label class="desc" id="title104" for="Field104">
+                                                Ad Size / Description
+                                                <span id="req_104" class="req">*</span>
+                                        </label>
+                                        <div>
+                                                <input id="Field104" name="Field104" type="text" class="field text large" value="" maxlength="255" tabindex="4" onkeyup="" required />
+                                        </div>
+                                </li>
+                                <li id="foli105" class="">
+                                        <label class="desc" id="title105" for="Field105">
+                                                Amount
+                                                <span id="req_105" class="req">*</span>
+                                        </label>
+                                        <span class="symbol">$</span>
+                                        <span>
+                                                <input id="Field105" name="Field105" type="text" class="field text currency nospin" value="" size="10" tabindex="5" required />
+                                                <label for="Field105">Dollars</label>
+                                        </span>
+                                        <span class="symbol radix">.</span>
+                                        <span class="cents">
+                                                <input id="Field105-1" name="Field105-1" type="text" class="field text nospin" value="" size="2" maxlength="2" tabindex="6"/>
+                                                <label for="Field105-1">Cents</label>
+                                        </span>
+                                </li>
+                        
+                                <li class="buttons ">
+                                        <div>
+                                                <input id="saveForm" name="saveForm" class="btTxt submit" type="submit" value="Submit" />
+                                        </div>
+                                </li>
+                        </ul>
+                </form> 
+        </div>
+
+</body>
+</html>
