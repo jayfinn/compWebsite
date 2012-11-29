@@ -21,6 +21,12 @@ import os
 import pytz
 os.environ['DJANGO_SETTINGS_MODULE'] = 'settings'
 
+from pytz.gae import pytz
+from datetime import datetime, timedelta
+from pytz import timezone
+
+eastern = pytz.timezone('US/Eastern')
+
 from google.appengine.dist import use_library
 use_library('django', '1.2')
 
@@ -38,6 +44,8 @@ eastern.zone
 'US/Eastern'
 timezone(u'US/Eastern') is eastern
 
+
+from comp import reqs
 class Advertising:
     # required ad sales
     TRADE_NUM = 0
@@ -719,9 +727,9 @@ class EventFeed(webapp.RequestHandler):
                     for event in events_list:
                         
                         if event.submit_date:
-                            event.submit_date = event.submit_date.replace(tzinfo=pytz.utc).astimezone(Eastern)
+                            event.submit_date = event.submit_date.replace(tzinfo=pytz.utc).astimezone(eastern)
                         if event.verify_date:
-                            event.verify_date = event.verify_date.replace(tzinfo=pytz.utc).astimezone(Eastern)
+                            event.verify_date = event.verify_date.replace(tzinfo=pytz.utc).astimezone(eastern)
                         
                         person = db.GqlQuery("SELECT * FROM UserInfo WHERE user = :1", event.user).get()
                         if person.active:
