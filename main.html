@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+        <head>
+                <title>Crimson Business Board</title>
+                
+                <meta charset="utf-8">
+                <link rel="stylesheet" href="css/structure.css" type="text/css" />
+                <link rel="stylesheet" href="css/form.css" type="text/css" />
+                <link rel="stylesheet" href="css/navigation.css" type="text/css" />
+
+        </head>
+
+        <body id="public">
+                {{ nav|safe }}
+                <div id="container" class="ltr" style="width:800px">
+                        <div style="margin:2em">
+                                <h1>Hello, {{ name }}!</h1>
+                                <img src="images/banner.jpg"/>
+                                <div style="display:none">
+                                        <h2>Completed</h2>
+                                        <ul>
+                                                <li>Main</li>
+                                                <li>Info</li>
+                                                <li>Hours</li>
+                                                <li>Advertisements</li>
+                                                <li>-</li>
+                                                <li>-</li>
+                                        </ul>
+                                        <h2>In Development</h2>
+                                        <ul>
+                                                <li>Requirements</li>
+                                                <li>Comper List</li>
+                                                <li>-</li>
+                                        </ul>
+                                        <h2>Future TODOs</h2>
+                                        <ul>
+                                                <li>Graphs</li>
+                                                <li>Master Comp Sheet</li>
+                                                <li>-</li>
+                                        </ul>
+                                </div>
+                        </div>
+                </div>
+        </body>
+</html>
