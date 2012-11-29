@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html class="">
+        <head>
+                <title>Requirements</title>
+                <meta charset="utf-8">
+        
+                <link rel="stylesheet" href="css/overlay-structure.css" type="text/css" />
+                <link rel="stylesheet" href="css/overlay-form.css" type="text/css" />
+                <link rel="stylesheet" href="css/reqs.css" type="text/css" />
+                <link rel="stylesheet" href="css/navigation.css" type="text/css" />
+
+                <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script>
+                <script type="text/javascript" src="js/jquery.tools.min.js"></script>
+        </head>
+
+<body id="report" class="wufoo layout3">
+
+{{ nav|safe }}
+<div id="container" class="ltr">
+
+<header id="header" class="info">
+        <h2>Requirements</h2>
+        <div>Do work.</div>
+</header>
+
+<div id="board-navigation">
+        <table class="pgStyle1 circle5" cellspacing="0">
+                <tr>
+                        <td class="c">
+                                <var>1</var>
+                        </td>
+                        <td class="t">
+                                <b id="pagecircle2"><a href="#ads">Advertising</a></b>
+                        </td>
+                        <td class="c">
+                                <var>2</var>
+                        </td>
+                        <td class="t">
+                                <b id="pagecircle3"><a href="#cm">Circulation & Marketing</a></b>
+                        </td>
+                        <td class="c">
+                                <var>3</var>
+                        </td>
+                        <td class="t">
+                                <b id="pagecircle4"><a href="#cp">Contract Printing</a></b>
+                        </td>
+                        <td class="c ">
+                                <var>4</var>
+                        </td>
+                        <td class="t">
+                                <b id="pagecircle5"><a href="#ops">Operations</a></b>
+                        </td>
+                        <td class="c">
+                                <var>5</var>
+                        </td>
+                        <td class="t">
+                                <b id="pagecircle1"><a href="#gen">General</a></b>
+                        </td>
+                </tr>
+        </table>
+</div>
+        
+        <div id="stage" class="clearfix">
+                <div id="ads" class="zone clearfix">
+                        <div class="wfo_widget fc">
+                                <table cellspacing="0" class="choices">
+                                        <caption>
+                                                <h4>Advertising</h4>
+                                                <span class="fcNav"><a>&nbsp;</a></span>
+                                        </caption>
+                                        {% for event in ads %}
+                                        <thead>
+                                                <tr>
+                                                        <th>
+                                                                <span><strong>{{ event.desc.name }}</strong></span>
+                                                                <span style="float:right"><strong>{{ event.num }}/{{ event.desc.quantity }} Completed</strong></span>
+                                                        </th>
+                                                        <th class="count">Date Submitted</th>
+                                                        <th class="count">Date Verified</th>
+                                                        <th class="count">Editor</th>
+                                                        <th class="count">
+                                                                @
+                                                        </th>
+                                                </tr>
+                                        </thead>
+                                        
+                                                {% for item in event.objs %}
+                                                <tbody>
+                                                        <tr class="color{{ item.status }}">
+                                                                <th class="item">
+                                                                        <div>-</div>
+                                                                </th>
+                                                                <td class="item count">
+                                                                        <div>{{ item.submit_date }}</div>
+                                                                </td>
+                                                                <td class="item count">
+                                                                        <div>{{ item.verify_date }}</div>
+                                                                </td>
+                                                                <td class="item count">
+                                                                        <div>{{ item.verify_init }}</div>
+                                                                </td>
+                                                                <td class="item count">
+
+                                                                </td>
+                                                        </tr>
+                                                </tbody>
+                                                {% endfor %}
+                                        {% endfor %}
+                                </table>
+                        </div>
+                </div>
+                
+                
+                
+                
+                <div id="cm" class="zone clearfix">
+                        <div class="wfo_widget fc">
+                                <table cellspacing="0" class="choices">
+                                        <caption>
+                                                <h4>Circulation & Marketing</h4>
+                                                <span class="fcNav"><a>&nbsp;</a></span>
+                                        </caption>
+                                        {% for event in cm %}
+                                        <thead>
+                                                <tr>
+                                                        <th>
+                                                                <span><strong>{{ event.desc.name }}</strong></span>
+                                                                <span style="float:right"><strong>{{ event.num }}/{{ event.desc.quantity }} Completed</strong></span>
+                                                        </th>
+                                                        <th class="count">Date Submitted</th>
+                                                        <th class="count">Date Verified</th>
+                                                        <th class="count">Editor</th>
+                                                        <th class="count">
+                                                                @
+                                                        </th>
+                                                </tr>
+                                        </thead>
+                                        
+                                                {% for item in event.objs %}
+                                                <tbody>
+                                                        <tr class="color{{ item.status }}">
+                                                                <th class="item">
+                                                                        <div>-</div>
+                                                                </th>
+                                                                <td class="item count">
+                                                                        <div>{{ item.submit_date }}</div>
+                                                                </td>
+                                                                <td class="item count">
+                                                                        <div>{{ item.verify_date }}</div>
+                                                                </td>
+                                                                <td class="item count">
+                                                                        <div>{{ item.verify_init }}</div>
+                                                                </td>
+                                                                <td class="item count">
+
+                                                                </td>
+                                                        </tr>
+                                                </tbody>
+                                                {% endfor %}
+                                        {% endfor %}
+                                </table>
+                        </div>
+                </div>
+                
+                
+                
+                
+                <div id="cp" class="zone clearfix">
+                        <div class="wfo_widget fc">
+                                <table cellspacing="0" class="choices">
+                                        <caption>
+                                                <h4>Contract Printing</h4>
+                                                <span class="fcNav"><a>&nbsp;</a></span>
+                                        </caption>
+                                        {% for event in cp %}
+                                        <thead>
+                                                <tr>
+                                                        <th>
+                                                                <span><strong>{{ event.desc.name }}</strong></span>
+                                                                <span style="float:right"><strong>{{ event.num }}/{{ event.desc.quantity }} Completed</strong></span>
+                                                        </th>
+                                                        <th class="count">Date Submitted</th>
+                                                        <th class="count">Date Verified</th>
+                                                        <th class="count">Editor</th>
+                                                        <th class="count">
+                                                                @
+                                                        </th>
+                                                </tr>
+                                        </thead>
+                                        
+                                                {% for item in event.objs %}
+                                                <tbody>
+                                                        <tr class="color{{ item.status }}">
+                                                                <th class="item">
+                                                                        <div>-</div>
+                                                                </th>
+                                                                <td class="item count">
+                                                                        <div>{{ item.submit_date }}</div>
+                                                                </td>
+                                                                <td class="item count">
+                                                                        <div>{{ item.verify_date }}</div>
+                                                                </td>
+                                                                <td class="item count">
+                                                                        <div>{{ item.verify_init }}</div>
+                                                                </td>
+                                                                <td class="item count">
+
+                                                                </td>
+                                                        </tr>
+                                                </tbody>
+                                                {% endfor %}
+                                        {% endfor %}
+                                </table>
+                        </div>
+                </div>
+                
+                
+                
+                
+                <div id="ops" class="zone clearfix">
+                        <div class="wfo_widget fc">
+                                <table cellspacing="0" class="choices">
+                                        <caption>
+                                                <h4>Operations</h4>
+                                                <span class="fcNav"><a>&nbsp;</a></span>
+                                        </caption>
+                                        {% for event in ops %}
+                                        <thead>
+                                                <tr>
+                                                        <th>
+                                                                <span><strong>{{ event.desc.name }}</strong></span>
+                                                                <span style="float:right"><strong>{{ event.num }}/{{ event.desc.quantity }} Completed</strong></span>
+                                                        </th>
+                                                        <th class="count">Date Submitted</th>
+                                                        <th class="count">Date Verified</th>
+                                                        <th class="count">Editor</th>
+                                                        <th class="count">
+                                                                @
+                                                        </th>
+                                                </tr>
+                                        </thead>
+                                        
+                                                {% for item in event.objs %}
+                                                <tbody>
+                                                        <tr class="color{{ item.status }}">
+                                                                <th class="item">
+                                                                        <div>-</div>
+                                                                </th>
+                                                                <td class="item count">
+                                                                        <div>{{ item.submit_date }}</div>
+                                                                </td>
+                                                                <td class="item count">
+                                                                        <div>{{ item.verify_date }}</div>
+                                                                </td>
+                                                                <td class="item count">
+                                                                        <div>{{ item.verify_init }}</div>
+                                                                </td>
+                                                                <td class="item count">
+
+                                                                </td>
+                                                        </tr>
+                                                </tbody>
+                                                {% endfor %}
+                                        {% endfor %}
+                                </table>
+                        </div>
+                </div>
+                
+                
+                
+                
+                
+                <div id="gen" class="zone clearfix">
+                        <div class="wfo_widget fc">
+                                <table cellspacing="0" class="choices">
+                                        <caption>
+                                                <h4>General</h4>
+                                                <span class="fcNav"><a>&nbsp;</a></span>
+                                        </caption>
+                                        {% for event in gen %}
+                                        <thead>
+                                                <tr>
+                                                        <th>
+                                                                <span><strong>{{ event.desc.name }}</strong></span>
+                                                                <span style="float:right"><strong>{{ event.num }}/{{ event.desc.quantity }} Completed</strong></span>
+                                                        </th>
+                                                        <th class="count">Date Submitted</th>
+                                                        <th class="count">Date Verified</th>
+                                                        <th class="count">Editor</th>
+                                                        <th class="count">
+                                                                @
+                                                        </th>
+                                                </tr>
+                                        </thead>
+                                        
+                                                {% for item in event.objs %}
+                                                <tbody>
+                                                        <tr class="color{{ item.status }}">
+                                                                <th class="item">
+                                                                        <div>-</div>
+                                                                </th>
+                                                                <td class="item count">
+                                                                        <div>{{ item.submit_date }}</div>
+                                                                </td>
+                                                                <td class="item count">
+                                                                        <div>{{ item.verify_date }}</div>
+                                                                </td>
+                                                                <td class="item count">
+                                                                        <div>{{ item.verify_init }}</div>
+                                                                </td>
+                                                                <td class="item count">
+
+                                                                </td>
+                                                        </tr>
+                                                </tbody>
+                                                {% endfor %}
+                                        {% endfor %}
+                                </table>
+                        </div>
+                </div>
+                
+                
+                
+                
+                
+        </div>
+
+</div><!--container-->
+
+</body>
+</html>

@@ -1,0 +1,145 @@
+<html>
+        <head>
+                <title>Time Sheet: {{ comper.name }}</title>
+                <meta charset="utf-8">
+
+                <link rel="stylesheet" href="css/overlay-structure.css" type="text/css" />
+                <link rel="stylesheet" href="css/overlay-form.css" type="text/css" />
+                <link rel="stylesheet" href="css/hours.css" type="text/css" />
+                <link rel="stylesheet" href="css/navigation.css" type="text/css" />
+
+                <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script>
+                <script type="text/javascript" src="js/jquery.tools.min.js"></script>
+        </head>
+        
+        <body id="report" class="wufoo layout1">
+                {{ nav|safe }}
+                <div id="container">            
+                        <header id="header" class="info">
+                                <h2 class="notranslate">{{ comper.name }}</h2>
+                        </header>
+                        
+                        <div id="stage" class="clearfix">
+                                <div id="z1" class="zone clearfix">
+                                        <div class="wfo_widget wfo_grid">
+                                                <table id="gridBar" cellspacing="0">
+                                                        <tbody>
+                                                                <tr>
+                                                                        <td class="col1">
+                                                                                <span id="grid_label">Weekly Hours</span>
+                                                                        </td>
+                                                                        <td class="col2">
+                                                                                <span id="navHolder">
+                                                                                        <span>Total Hours:</span>
+                                                                                </span>
+                                                                        </td>
+                                                                        <td class="col3">
+                                                                        </td>
+                                                                </tr>
+                                                        </tbody>
+                                                </table>
+                        
+                                                <div id="gridHolder" class="dg">
+                                                        <table id="entryTable" cellspacing="0">
+                                                                <thead>
+                                                                        <tr>
+                                                                                <td class="n">
+                                                                                        <div></div>
+                                                                                </td>
+                                                                                <td class="">
+                                                                                        <div>Session 1</div>
+                                                                                </td>
+                                                                                <td class="">
+                                                                                        <div>Session 2</div>
+                                                                                </td>
+                                                                                <td class="">
+                                                                                        <div>Session 3</div>
+                                                                                </td>
+                                                                                <td class="">
+                                                                                        <div>Session 4</div>
+                                                                                </td>
+                                                                                <td class="">
+                                                                                        <div>Session 5</div>
+                                                                                </td>
+                                                                                <!--
+                                                                                <td class="">
+                                                                                        <div>Additional Hours</div>
+                                                                                </td>
+                                                                                -->
+                                                                                <td class="">
+                                                                                        <div>Total Hours</div>
+                                                                                </td>
+                                                                        </tr>
+                                                                </thead>
+                                                                <tbody id="week_table" class="autohighlight">
+                                                                        {% for week in week_data %}
+                                                                                <tr class="week_hours">
+                                                                                        <td id="n" class="n" colspan="1">
+                                                                                                <div class="week">
+                                                                                                        {{ week.obj.week }}
+                                                                                                </div>
+                                                                                        </td>
+                                                                                        
+                                                                                        {% for day in week.inf %}
+                                                                                                <td class="log_day" colspan="1">
+                                                                                                        <div class="day" rel="#input_log_day">                                                                  
+                                                                                                                <div class="log_date">
+                                                                                                                        {% if day.date %}
+                                                                                                                                {{ day.date }}
+                                                                                                                        {% else %}
+                                                                                                                                &nbsp;
+                                                                                                                        {% endif %}
+                                                                                                                </div>
+                                                                                                                <div class="log_time">
+                                                                                                                        {% if day.stime %}
+                                                                                                                                {{ day.stime }}
+                                                                                                                        {% endif %}
+                                                                                                                        &nbsp;{% if day.etime %}-{% endif %}&nbsp;
+                                                                                                                        {% if day.etime %}
+                                                                                                                                {{ day.etime }}
+                                                                                                                        {% endif %}
+                                                                                                                </div>
+                                                                                                        </div>
+                                                                                                </td>
+                                                                                        {% endfor %}
+                                                                                        <!--
+                                                                                        <td class="log_extra" colspan="1">
+                                                                                                <div class="extra">{{ week.obj.extra }} (Disabled)</div>
+                                                                                        </td>
+                                                                                        -->
+                                                                                        <td class="total_hours" colspan="1">
+                                                                                                <div class="hours">{{ week.obj.hours }}</div>
+                                                                                        </td>
+                                                                                </tr>
+                                                                        {% endfor %}
+
+                                                                        <tr class="week_hours">
+                                                                                <td id="n" class="n" colspan="1">
+                                                                                        <div class="week">Total</div>
+                                                                                </td>
+                                                                                <td colspan="1"><div>&nbsp;</div></td>
+                                                                                <td colspan="1"><div>&nbsp;</div></td>
+                                                                                <td colspan="1"><div>&nbsp;</div></td>
+                                                                                <td colspan="1"><div>&nbsp;</div></td>
+                                                                                <!--
+                                                                                <td colspan="1"><div>&nbsp;</div></td>
+                                                                                -->
+                                                                                <td colspan="1"><div>&nbsp;</div></td>
+                                                                                <td class="total_hours" colspan="1">
+                                                                                        <div class="total">{{ total_hours }} Total Hours</div>
+                                                                                </td>
+                                                                        </tr>
+                                                                </tbody>
+                                                        </table>
+                                                </div>
+                                        </div>
+                                </div>
+                        </div>
+                </div>
+                <img id="bottom" src="/images/bottom.png" alt="" style="width: 1853px;"><!--container-->
+        </body>
+        <script type="text/javascript">
+                WEEK_KEYS = [];
+                {% for key in week_keys %}WEEK_KEYS.push("{{ key }}");{% endfor %}
+        </script>
+</html>
