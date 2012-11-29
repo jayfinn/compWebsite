@@ -29,9 +29,14 @@ from google.appengine.ext import db
 from google.appengine.ext import webapp
 from google.appengine.ext.webapp import template
 from google.appengine.ext.webapp import util
-
-from comp import reqs
-from util import Eastern
+from datetime import datetime, timedelta
+from pytz import timezone
+from pytz.gae import pytz
+utc = timezone('UTC')
+eastern = timezone('US/Eastern')
+eastern.zone
+'US/Eastern'
+timezone(u'US/Eastern') is eastern
 
 class Advertising:
     # required ad sales
@@ -187,9 +192,9 @@ class Events(webapp.RequestHandler):
                 events = db.GqlQuery("SELECT * FROM Event WHERE user = :1 ORDER BY submit_date ASC", user)
                 for event in events:
                     if event.submit_date:
-                        event.submit_date = event.submit_date.replace(tzinfo=pytz.utc).astimezone(Eastern)
+                        event.submit_date = event.submit_date.replace(tzinfo=pytz.utc).astimezone(eastern)
                     if event.verify_date:
-                        event.verify_date = event.verify_date.replace(tzinfo=pytz.utc).astimezone(Eastern)                   
+                        event.verify_date = event.verify_date.replace(tzinfo=pytz.utc).astimezone(eastern)                   
                     
                     i = 0
 
@@ -843,9 +848,9 @@ class ViewReqs(webapp.RequestHandler):
                     events = db.GqlQuery("SELECT * FROM Event WHERE user = :1 ORDER BY submit_date ASC", comper)
                     for event in events:
                         if event.submit_date:
-                            event.submit_date = event.submit_date.replace(tzinfo=pytz.utc).astimezone(Eastern)
+                            event.submit_date = event.submit_date.replace(tzinfo=pytz.utc).astimezone(eastern)
                         if event.verify_date:
-                            event.verify_date = event.verify_date.replace(tzinfo=pytz.utc).astimezone(Eastern)                   
+                            event.verify_date = event.verify_date.replace(tzinfo=pytz.utc).astimezone(eastern)                   
                         
                         i = 0
     
