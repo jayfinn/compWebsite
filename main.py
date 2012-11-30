@@ -752,6 +752,7 @@ class EventFeed(webapp.RequestHandler):
                         action = 1
                     if submit == "Deny":
                         action = -1
+                        event.notes = self.request.get("notes")
                     
                     for key in keys:
                         event = db.get(key)
@@ -762,6 +763,7 @@ class EventFeed(webapp.RequestHandler):
                             event.verify_init = info.initials
                             event.verify_date = datetime.utcnow()
                             event.notes = self.request.get("notes")
+                            
                         
                         event.put()
                     self.redirect('/approve')
