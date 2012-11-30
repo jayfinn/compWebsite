@@ -761,6 +761,7 @@ class EventFeed(webapp.RequestHandler):
                             event.verify_user = user
                             event.verify_init = info.initials
                             event.verify_date = datetime.utcnow()
+                            event.notes = self.request.get("notes")
                         
                         event.put()
                     self.redirect('/approve')
