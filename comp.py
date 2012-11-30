@@ -178,7 +178,7 @@ reqs = [#ads
         
         #biz meals
         {'name': 'Biz Meal',
-         'quantity': 4,
+         'quantity': 2,
          'board': BoardType.GEN,
          'event': EventType.MEETING,
          'notes': ""},
