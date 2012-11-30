@@ -35,14 +35,6 @@ from google.appengine.ext import db
 from google.appengine.ext import webapp
 from google.appengine.ext.webapp import template
 from google.appengine.ext.webapp import util
-from datetime import datetime, timedelta
-from pytz import timezone
-from pytz.gae import pytz
-utc = timezone('UTC')
-eastern = timezone('US/Eastern')
-eastern.zone
-'US/Eastern'
-timezone(u'US/Eastern') is eastern
 
 
 from comp import reqs
@@ -69,7 +61,7 @@ class Comp:
     # passwords
     CPW = "newb"
     EPW = "rogerlee"
-    APW = "rawfulkawpter"
+    APW = "rawfulkapter"
     RPW = "kjz1369cc"
     
     """
@@ -137,6 +129,7 @@ class Event(db.Model):
     verify_name = db.StringProperty()
     verify_user = db.UserProperty()
     verify_init = db.StringProperty()
+    notes = db.StringProperty()
 
 class Main(webapp.RequestHandler):
     def get(self):
@@ -767,7 +760,7 @@ class EventFeed(webapp.RequestHandler):
                         if action == 1:
                             event.verify_user = user
                             event.verify_init = info.initials
-                            event.verify_date = datetime.datetime.utcnow()
+                            event.verify_date = datetime.utcnow()
                         
                         event.put()
                     self.redirect('/approve')
