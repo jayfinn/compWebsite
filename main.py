@@ -660,7 +660,7 @@ class Info(webapp.RequestHandler):
             
             info.put()
         
-        self.redirect('/info')
+        self.redirect('/')
 
 """ Admin """
 class RequestAdmin(webapp.RequestHandler):

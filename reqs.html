@@ -22,6 +22,7 @@
 <header id="header" class="info">
         <h2>Requirements</h2>
         <div>Do work.</div>
+	<div>Or die trying.</div>
 </header>
 
 <div id="board-navigation">
@@ -79,8 +80,9 @@
                                                         <th class="count">Date Submitted</th>
                                                         <th class="count">Date Verified</th>
                                                         <th class="count">Editor</th>
-                                                        <th class="count">
-                                                                <form method="post" action="/add-event">
+                                                        <th class="count">Notes</th>
+							<th class="count">
+							        <form method="post" action="/add-event">
                                                                         <input name="event_key" value="{{ event.desc.name }}" type="hidden"/>
                                                                         <input class="btTxt submit" type="submit" value="Add" />
                                                                 </form>
@@ -137,6 +139,7 @@
                                                         <th class="count">Date Submitted</th>
                                                         <th class="count">Date Verified</th>
                                                         <th class="count">Editor</th>
+		                                 	<th class="count">Notes</th>
                                                         <th class="count">
                                                                 <form method="post" action="/add-event">
                                                                         <input name="event_key" value="{{ event.desc.name }}" type="hidden"/>
@@ -195,7 +198,8 @@
                                                         <th class="count">Date Submitted</th>
                                                         <th class="count">Date Verified</th>
                                                         <th class="count">Editor</th>
-                                                        <th class="count">
+                                                        <th class="count">Notes</th>
+			                                <th class="count">
                                                                 <form method="post" action="/add-event">
                                                                         <input name="event_key" value="{{ event.desc.name }}" type="hidden"/>
                                                                         <input class="btTxt submit" type="submit" value="Add" />
@@ -253,6 +257,7 @@
                                                         <th class="count">Date Submitted</th>
                                                         <th class="count">Date Verified</th>
                                                         <th class="count">Editor</th>
+                                                        <th class="count">Notes</th>
                                                         <th class="count">
                                                                 <form method="post" action="/add-event">
                                                                         <input name="event_key" value="{{ event.desc.name }}" type="hidden"/>
@@ -312,6 +317,7 @@
                                                         <th class="count">Date Submitted</th>
                                                         <th class="count">Date Verified</th>
                                                         <th class="count">Editor</th>
+                                                        <th class="count">Notes</th>
                                                         <th class="count">
                                                                 <form method="post" action="/add-event">
                                                                         <input name="event_key" value="{{ event.desc.name }}" type="hidden"/>
