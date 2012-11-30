@@ -11,7 +11,6 @@
 
                 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script>
                 <script type="text/javascript" src="js/jquery.tools.min.js"></script>
-                <script type="text/javascript" src="js/form.js"></script>
         </head>
 
 <body id="report" class="wufoo layout3">
@@ -21,9 +20,8 @@
 
 <header id="header" class="info">
         <h2>Requirements</h2>
-        <div>Do work.</div>
-	<div>Or die trying.</div>
-        <div>These are the requirements you will need to complete during the comp.</div>
+        <div>These requirements must all be completed during the
+        comp. Try to work on them throughout the semester to prepare for your Midpoint and Final Interviews.</div>
 </header>
 
 <div id="board-navigation">
@@ -81,12 +79,8 @@
                                                         <th class="count">Date Submitted</th>
                                                         <th class="count">Date Verified</th>
                                                         <th class="count">Editor</th>
-                                                        <th class="count">Notes</th>
-							<th class="count">
-							        <form method="post" action="/add-event">
-                                                                        <input name="event_key" value="{{ event.desc.name }}" type="hidden"/>
-                                                                        <input class="btTxt submit" type="submit" value="Add" />
-                                                                </form>
+                                                        <th class="count">
+                                                                @
                                                         </th>
                                                 </tr>
                                         </thead>
@@ -107,10 +101,7 @@
                                                                         <div>{{ item.verify_init }}</div>
                                                                 </td>
                                                                 <td class="item count">
-                                                                        <form method="post" action="/del-event">
-                                                                                <input name="del_key" value="{{ item.key }}" type="hidden"/>
-                                                                                <input class="btTxt submit" type="submit" value="Delete" />
-                                                                        </form>
+
                                                                 </td>
                                                         </tr>
                                                 </tbody>
@@ -140,12 +131,8 @@
                                                         <th class="count">Date Submitted</th>
                                                         <th class="count">Date Verified</th>
                                                         <th class="count">Editor</th>
-		                                 	<th class="count">Notes</th>
                                                         <th class="count">
-                                                                <form method="post" action="/add-event">
-                                                                        <input name="event_key" value="{{ event.desc.name }}" type="hidden"/>
-                                                                        <input class="btTxt submit" type="submit" value="Add" />
-                                                                </form>
+                                                                @
                                                         </th>
                                                 </tr>
                                         </thead>
@@ -166,10 +153,7 @@
                                                                         <div>{{ item.verify_init }}</div>
                                                                 </td>
                                                                 <td class="item count">
-                                                                        <form method="post" action="/del-event">
-                                                                                <input name="del_key" value="{{ item.key }}" type="hidden"/>
-                                                                                <input class="btTxt submit" type="submit" value="Delete" />
-                                                                        </form>
+
                                                                 </td>
                                                         </tr>
                                                 </tbody>
@@ -199,12 +183,8 @@
                                                         <th class="count">Date Submitted</th>
                                                         <th class="count">Date Verified</th>
                                                         <th class="count">Editor</th>
-                                                        <th class="count">Notes</th>
-			                                <th class="count">
-                                                                <form method="post" action="/add-event">
-                                                                        <input name="event_key" value="{{ event.desc.name }}" type="hidden"/>
-                                                                        <input class="btTxt submit" type="submit" value="Add" />
-                                                                </form>
+                                                        <th class="count">
+                                                                @
                                                         </th>
                                                 </tr>
                                         </thead>
@@ -225,10 +205,7 @@
                                                                         <div>{{ item.verify_init }}</div>
                                                                 </td>
                                                                 <td class="item count">
-                                                                        <form method="post" action="/del-event">
-                                                                                <input name="del_key" value="{{ item.key }}" type="hidden"/>
-                                                                                <input class="btTxt submit" type="submit" value="Delete" />
-                                                                        </form>
+
                                                                 </td>
                                                         </tr>
                                                 </tbody>
@@ -258,12 +235,8 @@
                                                         <th class="count">Date Submitted</th>
                                                         <th class="count">Date Verified</th>
                                                         <th class="count">Editor</th>
-                                                        <th class="count">Notes</th>
                                                         <th class="count">
-                                                                <form method="post" action="/add-event">
-                                                                        <input name="event_key" value="{{ event.desc.name }}" type="hidden"/>
-                                                                        <input class="btTxt submit" type="submit" value="Add" />
-                                                                </form>
+                                                                @
                                                         </th>
                                                 </tr>
                                         </thead>
@@ -284,10 +257,7 @@
                                                                         <div>{{ item.verify_init }}</div>
                                                                 </td>
                                                                 <td class="item count">
-                                                                        <form method="post" action="/del-event">
-                                                                                <input name="del_key" value="{{ item.key }}" type="hidden"/>
-                                                                                <input class="btTxt submit" type="submit" value="Delete" />
-                                                                        </form>
+
                                                                 </td>
                                                         </tr>
                                                 </tbody>
@@ -318,12 +288,8 @@
                                                         <th class="count">Date Submitted</th>
                                                         <th class="count">Date Verified</th>
                                                         <th class="count">Editor</th>
-                                                        <th class="count">Notes</th>
                                                         <th class="count">
-                                                                <form method="post" action="/add-event">
-                                                                        <input name="event_key" value="{{ event.desc.name }}" type="hidden"/>
-                                                                        <input class="btTxt submit" type="submit" value="Add" />
-                                                                </form>
+                                                                @
                                                         </th>
                                                 </tr>
                                         </thead>
@@ -344,10 +310,7 @@
                                                                         <div>{{ item.verify_init }}</div>
                                                                 </td>
                                                                 <td class="item count">
-                                                                        <form method="post" action="/del-event">
-                                                                                <input name="del_key" value="{{ item.key }}" type="hidden"/>
-                                                                                <input class="btTxt submit" type="submit" value="Delete" />
-                                                                        </form>
+
                                                                 </td>
                                                         </tr>
                                                 </tbody>

@@ -1,6 +1,6 @@
 <html>
         <head>
-                <title>Time Sheet</title>
+                <title>Time Sheet: {{ comper.name }}</title>
                 <meta charset="utf-8">
 
                 <link rel="stylesheet" href="css/overlay-structure.css" type="text/css" />
@@ -10,65 +10,13 @@
 
                 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script>
                 <script type="text/javascript" src="js/jquery.tools.min.js"></script>
-                <script type="text/javascript" src="js/form.js"></script>
-                <script type="text/javascript" src="js/hours.js"></script>
-                
-                <link rel="stylesheet" type="text/css" media="all" href="calendar/jsDatePick_ltr.min.css" />
-                <script type="text/javascript" src="calendar/jsDatePick.jquery.min.1.3.js"></script>
-                
-                
-                <script type="text/javascript">
-                        window.onload = function(){             
-                                
-                                g_globalObject = new JsDatePick({
-                                        useMode:1,
-                                        isStripped:true,
-                                        target:"calendar_obj",
-                                        dateFormat:"%m-%d-%Y",
-                                        imgPath:"calendar/img/",
-                                        // This is an example of what the full configuration offers.
-                                        // For full documentation about these settings please see the full version of the code.
-                                        
-                                        /*
-                                        selectedDate:{                          
-                                                day:5,
-                                                month:9,
-                                                year:2006
-                                        },
-                                        yearsRange:[1978,2020],
-                                        limitToToday:false,
-                                        imgPath:"calendar/img/",
-                                        cellColorScheme:"beige",
-                                        dateFormat:"%m-%d-%Y",
-                                        weekStartDay:1
-                                        */
-                                });
-                                
-                                g_globalObject.setOnSelectedDelegate(function(){
-                                        var obj = g_globalObject.getSelectedDay();
-                                        // alert("You have selected: " + obj.month + "/" + obj.day + "/" + obj.year);
-                                        document.getElementById("Field5-1").value = obj.month;
-                                        document.getElementById("Field5-2").value = obj.day;
-                                        document.getElementById("Field5").value = obj.year;
-                                });                             
-                        };
-                </script>
-                
         </head>
         
         <body id="report" class="wufoo layout1">
                 {{ nav|safe }}
                 <div id="container">            
                         <header id="header" class="info">
-                                <h2 class="notranslate">Daymanning Hours</h2>
-                                <div class="notranslate">
-				  <br> Daymanning hours fall between
-                the following times:
-                                        <br>
-                                        Monday - Thursday: 9 AM - 5 PM
-                                        <br>
-                                        Friday: 9 AM - 3 PM
-                                </div>
+                                <h2 class="notranslate">{{ comper.name }}</h2>
                         </header>
                         
                         <div id="stage" class="clearfix">
@@ -188,109 +136,7 @@
                                 </div>
                         </div>
                 </div>
-                <img id="bottom" src="/images/bottom.png" alt="" style="width: 1853px;">
-                
-                <div id="input_log_day" class="simple_overlay">
-                        <header id="header" class="info">
-                                <h2>Add Hours</h2>
-                                <div>List time spent in the Crimson
-                        (UBO, LBO, or Conference Room).</div>
-                        </header>
-
-                        <form id="main-form" name="form2" class="wufoo topLabel page" method="post" action="">
-                        
-                                <input name="week_key" type="hidden" value="" />
-                                <input name="day" type="hidden" value="" />
-                                
-                                
-                                <div id="form_inputs">
-                                        <div id="calendar_obj" style="float: left; margin:0 0 0 0; width:210px; height:230px;"></div>
-                                        
-                                        <div style="float: left; height:230px;">
-                                                <ul>
-                                                        <li id="foli5" class="date">
-                                                                <label class="desc" id="title5" for="Field5">
-                                                                        Date
-                                                                        <span id="req_5" class="req">*</span>
-                                                                </label>
-                                                                <span>
-                                                                        <input id="Field5-1" name="Field5-1" type="text" class="field text" value="" size="2" maxlength="2" tabindex="1" required />
-                                                                        <label for="Field5-1">MM</label>
-                                                                </span> 
-                                                                <span class="symbol">/</span>
-                                                                <span>
-                                                                        <input id="Field5-2" name="Field5-2" type="text" class="field text" value="" size="2" maxlength="2" tabindex="2" required />
-                                                                        <label for="Field5-2">DD</label>
-                                                                </span>
-                                                                <span class="symbol">/</span>
-                                                                <span>
-                                                                        <input id="Field5" name="Field5" type="text" class="field text" value="" size="4" maxlength="4" tabindex="3" required />
-                                                                        <label for="Field5">YYYY</label>
-                                                                </span>
-                                                                <span id="cal5" style="display:none">
-                                                                        <img id="pick5" class="datepicker" src="images/calendar.png" alt="Pick a date." />
-                                                                </span>
-                                                        </li>
-                                                        <li id="foli6" class="time">
-                                                                <label class="desc" id="title6" for="Field6">
-                                                                        Start Time
-                                                                        <span id="req_6" class="req">*</span>
-                                                                </label>
-                                                                <span class="hours">
-                                                                        <input id="Field6" name="Field6" type="text" class="field text" value="" size="2" maxlength="2" tabindex="4" required />
-                                                                        <label for="Field6">HH</label>
-                                                                </span>
-                                                                <span class="symbol minutes">:</span>
-                                                                <span class="minutes">
-                                                                        <input id="Field6-1" name="Field6-1" type="text" class="field text" value="" size="2" maxlength="2" tabindex="5" required />
-                                                                        <label for="Field6-1">MM</label>
-                                                                </span>
-                                                                <span class="seconds">
-                                                                        <input id="Field6-2" name="Field6-2" type="hidden" class="field text" value="0" size="2" maxlength="2" tabindex="6" />
-                                                                </span>
-                                                                <span class="ampm">
-                                                                <select id="Field6-3" name="Field6-3" class="field select" style="width:4em" tabindex="7" >
-                                                                        <option value="AM" selected="selected">AM</option>
-                                                                        <option value="PM" >PM</option>
-                                                                </select>
-                                                                <label for="Field6-3">AM/PM</label>
-                                                                </span>
-                                                        </li>
-                                                        <li id="foli7" class="time">
-                                                                <label class="desc" id="title7" for="Field7">
-                                                                End Time
-                                                                <span id="req_7" class="req">*</span>
-                                                                </label>
-                                                                <span class="hours">
-                                                                        <input id="Field7" name="Field7" type="text" class="field text" value="" size="2" maxlength="2" tabindex="8" required />
-                                                                        <label for="Field7">HH</label>
-                                                                </span>
-                                                                <span class="symbol minutes">:</span>
-                                                                <span class="minutes">
-                                                                        <input id="Field7-1" name="Field7-1" type="text" class="field text" value="" size="2" maxlength="2" tabindex="9" required />
-                                                                        <label for="Field7-1">MM</label>
-                                                                </span>
-                                                                <span class="seconds">
-                                                                        <input id="Field7-2" name="Field7-2" type="hidden" class="field text" value="0" size="2" maxlength="2" tabindex="10" />
-                                                                </span>
-                                                                <span class="ampm">
-                                                                        <select id="Field7-3" name="Field7-3" class="field select" style="width:4em" tabindex="11" >
-                                                                                <option value="AM" selected="selected">AM</option>
-                                                                                <option value="PM" >PM</option>
-                                                                        </select>
-                                                                        <label for="Field7-3">AM/PM</label>
-                                                                </span>
-                                                        </li>
-                                                </ul>
-                                        </div>
-                                </div>
-                                
-                                <div style="margin-top: 1em">
-                                        <input id="addForm" name="addForm" class="btTxt submit" type="submit" value="Submit" onclick="submitForm(this)"/>
-                                        <input id="delForm" name="delForm" class="btTxt submit" type="button" value="Delete" onclick="submitForm(this)"/>
-                                </div>
-                        </form>
-                </div><!--container-->
+                <img id="bottom" src="/images/bottom.png" alt="" style="width: 1853px;"><!--container-->
         </body>
         <script type="text/javascript">
                 WEEK_KEYS = [];

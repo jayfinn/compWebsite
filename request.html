@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+        <head>
+                <title>
+                        Request Access
+                </title>
+                
+                <meta charset="utf-8">
+                <link rel="stylesheet" href="css/structure.css" type="text/css" />
+                <link rel="stylesheet" href="css/form.css" type="text/css" />
+                <link rel="stylesheet" href="css/navigation.css" type="text/css" />
+
+                <script src="js/info.js"></script>
+        </head>
+
+        <body id="public">
+                {{ nav|safe }}
+                <div id="container" class="ltr">
+                        <form id="form" name="form" class="wufoo topLabel page" method="post" action="/request-admin">
+                        
+                                <header id="header" class="info">
+                                        <h1>You have {{ status }} level access.</h1>
+                                        
+                                        <h2>Request Access</h2>
+        
+                                        <div>
+                                                Enter your password.
+                                        </div>
+                                </header>
+                                
+                                <ul>
+                                        <li class="">
+                                                <label class="desc" for="initials">
+                                                        Initials
+                                                        <span class="req">*</span>
+                                                </label>
+                                                <div>
+                                                        <input id="initials" name="initials" type="text" class="field text medium" value="{% if initials %}{{ initials }}{% endif %}" maxlength="3" tabindex="1" onkeyup="" required />
+                                                </div>
+                                        </li>
+                                        
+                                        <li class="">
+                                                <label class="desc" for="pw0">
+                                                        Editor Password
+                                                </label>
+                                                <div>
+                                                        <input id="pw0" name="pw0" type="password" class="field text medium" value="" maxlength="255" tabindex="1" onkeyup=""/>
+                                                </div>
+                                        </li>
+                                        
+                                        <li class="">
+                                                <label class="desc" for="pw1">
+                                                        Admin Password
+                                                </label>
+                                                <div>
+                                                        <input id="pw1" name="pw1" type="password" class="field text medium" value="" maxlength="255" tabindex="1" onkeyup=""/>
+                                                </div>
+                                        </li>
+                                        
+                                        <li class="buttons">
+                                                <div>
+                                                        <input id="saveForm" name="saveForm" class="btTxt submit" type="submit" value="Submit" />
+                                                </div>
+                                        </li>
+                                
+                                </ul>
+                        </form> 
+                </div>
+        </body>
+</html>
