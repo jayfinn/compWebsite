@@ -130,6 +130,7 @@ class Event(db.Model):
     verify_user = db.UserProperty()
     verify_init = db.StringProperty()
     notes = db.StringProperty()
+    editor_requested = db.StringProperty()
 
 class Main(webapp.RequestHandler):
     def get(self):
@@ -752,7 +753,6 @@ class EventFeed(webapp.RequestHandler):
                         action = 1
                     if submit == "Deny":
                         action = -1
-                        event.notes = self.request.get("notes")
                     
                     for key in keys:
                         event = db.get(key)
@@ -763,6 +763,7 @@ class EventFeed(webapp.RequestHandler):
                             event.verify_init = info.initials
                             event.verify_date = datetime.utcnow()
                             event.notes = self.request.get("notes")
+                            event.editor_requested = self.request.get("initials")
                             
                         
                         event.put()
@@ -816,6 +817,10 @@ class UserAccess(webapp.RequestHandler):
                                 comper = db.get(key)
                                 comper.active = True
                                 comper.put()
+                        elif submit == "Delete":
+                            for key in keys:
+                                comper = db.get(key)
+                                comper.delete()
                         self.redirect('/user-access')
 
 

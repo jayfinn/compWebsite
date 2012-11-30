@@ -33,7 +33,8 @@
                                                         <th class="count">Comper</th>
                                                         <th class="count">Requirement</th>
                                                         <th class="count">Date Submitted</th>
-                                                        <th class="count">Notes </th>
+                                                        <th class="count">Editor Requested</th>
+                                                        <th class="count">Notes</th>
 	                                                <th class="count">
                                                                 <input class="btTxt submit" type="submit" name="submit" value="Approve" />
                                                                 
@@ -52,6 +53,9 @@
                                                         </td>
                                                         <td class="count">
                                                                 <div>{{ event.obj.submit_date }}</div>
+                                                        </td>
+							<td class="count">
+                                                                <div>{{ event.obj.editor_requested }}</div>
                                                         </td>
 							<td class="count">
 							        <div><textarea name="notes" rows="2" cols="20"></textarea></div>
