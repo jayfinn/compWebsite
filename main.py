@@ -890,7 +890,49 @@ class ViewReqs(webapp.RequestHandler):
                             'comper': comperinfo,
                             'reqs': reqs,
                             'sheet': sheet}
-                    self.response.out.write(template.render('view-reqs.html', args))                    
+                    self.response.out.write(template.render('view-reqs.html', args))
+    def post(self):
+        user = users.get_current_user()
+        if not user:
+            self.redirect(users.create_login_url(self.request.uri))
+        else:
+            info = db.GqlQuery("SELECT * FROM UserInfo WHERE user = :1", user).get()
+            if not info:
+                self.redirect('/info')
+            else:
+                if info.comper == Comp.COMPER:
+                    self.redirect('/')
+                else:
+                    pw = self.request.get('pw')
+                    if pw == (Comp.CPW):
+                        self.redirect('user-access')
+                    else:
+                         key = self.request.get('key')
+                         comperinfo = db.get(key)
+                         comper = comperinfo.user
+                        
+                         event_type = self.request.get('event_key')
+                         index = 0
+            
+                         i = 0
+                         for req in reqs:
+                             if req['name'] == event_type:
+                                 index = i
+                                 i += 1
+
+                                 event_info = reqs[index]
+            
+                                 new_event = Event(user = comper,
+                                                   index = index,
+                                                   boardtype = event_info['board'],
+                                                   eventtype = event_info['event'],
+                                                   editor_requested = initials,
+                                                   status = Comp.NEW,
+                                                   )
+            
+                                 new_event.put()
+                                 self.redirect('/approve')
+
 
 class ViewAds(webapp.RequestHandler):
     def get(self):
