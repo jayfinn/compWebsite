@@ -35,7 +35,7 @@
 
 <div id="board-navigation">
         <table class="pgStyle1 circle5" cellspacing="0">
-x                <tr>
+                <tr>
                         <td class="c">
                                 <var>1</var>
                         </td>
@@ -85,20 +85,23 @@ x                <tr>
                                                                 <span><strong>{{ event.desc.name }}</strong></span>
                                                                 <span style="float:right"><strong>{{ event.num }}/{{ event.desc.quantity }} Completed</strong></span>
                                                         </th>
+							<form method="post" action="/add-event">
                                                         <th class="count">Date Submitted</th>
                                                         <th class="count">Date Verified</th>
-							<th class="count">Editor <div><input
-                                                        name="initials" type="text"
-                                                        onKeyDown="limitText(this.form.limitedtextfield,this.form.countdown,3);
-                                                        " onKeyUp="limitText(this.form.limitedtextfield,this.form.countdown,3);" maxlength="3"><br>
-                                                        <font size="1"></th>
+							<th class="count">Editor
+					           	            	<input name="initials" type="text"
+                                                                        onKeyDown="limitText(this.form.limitedtextfield,this.form.countdown,3);
+                                                                        " onKeyUp="limitText(this.form.limitedtextfield,this.form.countdown,3);" maxlength="3"><br>
+                                                                        <font size="1">
+							</th>
+
                                                         <th class="count">Notes</th>
                                                         <th class="count">
-							        <form method="post" action="/add-event">
                                                                         <input name="event_key" value="{{ event.desc.name }}" type="hidden"/>
                                                                         <input class="btTxt submit" type="submit" value="Add" />
-                                                                </form>
+                                                               
                                                         </th>
+							</form>
                                                 </tr>
                                         </thead>
                                         
@@ -151,20 +154,23 @@ x                <tr>
                                                                 <span><strong>{{ event.desc.name }}</strong></span>
                                                                 <span style="float:right"><strong>{{ event.num }}/{{ event.desc.quantity }} Completed</strong></span>
                                                         </th>
+                                                        <form method="post" action="/add-event">
                                                         <th class="count">Date Submitted</th>
                                                         <th class="count">Date Verified</th>
-                                                        <th class="count">Editor <div><input
-                                                        name="initials" type="text"
-                                                        onKeyDown="limitText(this.form.limitedtextfield,this.form.countdown,3);
-                                                        " onKeyUp="limitText(this.form.limitedtextfield,this.form.countdown,3);" maxlength="3"><br>
-                                                        <font size="1"></th>
+							<th class="count">Editor
+					           	            	<input name="initials" type="text"
+                                                                        onKeyDown="limitText(this.form.limitedtextfield,this.form.countdown,3);
+                                                                        " onKeyUp="limitText(this.form.limitedtextfield,this.form.countdown,3);" maxlength="3"><br>
+                                                                        <font size="1">
+							</th>
+
                                                         <th class="count">Notes</th>
                                                         <th class="count">
-                                                                <form method="post" action="/add-event">
                                                                         <input name="event_key" value="{{ event.desc.name }}" type="hidden"/>
                                                                         <input class="btTxt submit" type="submit" value="Add" />
-                                                                </form>
+                                                               
                                                         </th>
+							</form>
                                                 </tr>
                                         </thead>
                                         
@@ -217,20 +223,23 @@ x                <tr>
                                                                 <span><strong>{{ event.desc.name }}</strong></span>
                                                                 <span style="float:right"><strong>{{ event.num }}/{{ event.desc.quantity }} Completed</strong></span>
                                                         </th>
+                                                       <form method="post" action="/add-event">
                                                         <th class="count">Date Submitted</th>
                                                         <th class="count">Date Verified</th>
-                                                        <th class="count">Editor <div><input
-                                                        name="initials" type="text"
-                                                        onKeyDown="limitText(this.form.limitedtextfield,this.form.countdown,3);
-                                                        " onKeyUp="limitText(this.form.limitedtextfield,this.form.countdown,3);" maxlength="3"><br>
-                                                        <font size="1"></th>
+							<th class="count">Editor
+					           	            	<input name="initials" type="text"
+                                                                        onKeyDown="limitText(this.form.limitedtextfield,this.form.countdown,3);
+                                                                        " onKeyUp="limitText(this.form.limitedtextfield,this.form.countdown,3);" maxlength="3"><br>
+                                                                        <font size="1">
+							</th>
+
                                                         <th class="count">Notes</th>
                                                         <th class="count">
-                                                                <form method="post" action="/add-event">
                                                                         <input name="event_key" value="{{ event.desc.name }}" type="hidden"/>
                                                                         <input class="btTxt submit" type="submit" value="Add" />
-                                                                </form>
+                                                               
                                                         </th>
+							</form>
                                                 </tr>
                                         </thead>
                                         
@@ -283,20 +292,23 @@ x                <tr>
                                                                 <span><strong>{{ event.desc.name }}</strong></span>
                                                                 <span style="float:right"><strong>{{ event.num }}/{{ event.desc.quantity }} Completed</strong></span>
                                                         </th>
+                                                        <form method="post" action="/add-event">
                                                         <th class="count">Date Submitted</th>
                                                         <th class="count">Date Verified</th>
-                                                        <th class="count">Editor <div><input
-                                                        name="initials" type="text"
-                                                        onKeyDown="limitText(this.form.limitedtextfield,this.form.countdown,3);
-                                                        " onKeyUp="limitText(this.form.limitedtextfield,this.form.countdown,3);" maxlength="3"><br>
-                                                        <font size="1"></th>
+							<th class="count">Editor
+					           	            	<input name="initials" type="text"
+                                                                        onKeyDown="limitText(this.form.limitedtextfield,this.form.countdown,3);
+                                                                        " onKeyUp="limitText(this.form.limitedtextfield,this.form.countdown,3);" maxlength="3"><br>
+                                                                        <font size="1">
+							</th>
+
                                                         <th class="count">Notes</th>
                                                         <th class="count">
-                                                                <form method="post" action="/add-event">
                                                                         <input name="event_key" value="{{ event.desc.name }}" type="hidden"/>
                                                                         <input class="btTxt submit" type="submit" value="Add" />
-                                                                </form>
+                                                               
                                                         </th>
+							</form>
                                                 </tr>
                                         </thead>
                                         
@@ -350,20 +362,23 @@ x                <tr>
                                                                 <span><strong>{{ event.desc.name }}</strong></span>
                                                                 <span style="float:right"><strong>{{ event.num }}/{{ event.desc.quantity }} Completed</strong></span>
                                                         </th>
+                                                        <form method="post" action="/add-event">
                                                         <th class="count">Date Submitted</th>
                                                         <th class="count">Date Verified</th>
-                                                        <th class="count">Editor <div><input
-                                                        name="initials" type="text"
-                                                        onKeyDown="limitText(this.form.limitedtextfield,this.form.countdown,3);
-                                                        " onKeyUp="limitText(this.form.limitedtextfield,this.form.countdown,3);" maxlength="3"><br>
-                                                        <font size="1"></th>
+							<th class="count">Editor
+					           	            	<input name="initials" type="text"
+                                                                        onKeyDown="limitText(this.form.limitedtextfield,this.form.countdown,3);
+                                                                        " onKeyUp="limitText(this.form.limitedtextfield,this.form.countdown,3);" maxlength="3"><br>
+                                                                        <font size="1">
+							</th>
+
                                                         <th class="count">Notes</th>
                                                         <th class="count">
-                                                                <form method="post" action="/add-event">
                                                                         <input name="event_key" value="{{ event.desc.name }}" type="hidden"/>
                                                                         <input class="btTxt submit" type="submit" value="Add" />
-                                                                </form>
+                                                               
                                                         </th>
+							</form>
                                                 </tr>
                                         </thead>
                                         

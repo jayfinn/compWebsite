@@ -230,8 +230,8 @@ class AddEvent(webapp.RequestHandler):
         if not user:
             self.redirect(users.create_login_url(self.request.uri))
         else:
+            initials = self.request.get('initials', default_value='None')
             event_type = self.request.get('event_key')
-            initials = self.request.get('initials')
             index = 0
             
             i = 0
