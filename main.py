@@ -424,7 +424,7 @@ class DelAd(webapp.RequestHandler):
             # update adtotal in db
             adtotal = db.GqlQuery("SELECT * FROM AdTotal WHERE user = :1", user).get()
             if not adtotal:
-                adtotal = AdTotal(user = user)
+                adtotal = AdTotal(user = user) 
             adtotal.unsolicited_number = u_num
             adtotal.unsolicited_amount = u_amt
             adtotal.solicited_number = s_num
@@ -892,6 +892,9 @@ class ViewReqs(webapp.RequestHandler):
                             'sheet': sheet}
                     self.response.out.write(template.render('view-reqs.html', args))
     def post(self):
+       key = self.request.get('key')
+       comperinfo = db.get(key)
+       comper = comperinfo.user
        user = users.get_current_user()
        if not user:
             self.redirect(users.create_login_url(self.request.uri))
@@ -903,9 +906,6 @@ class ViewReqs(webapp.RequestHandler):
                 if info.comper == Comp.COMPER:
                     self.redirect('/')
                 else:
-                    key = self.request.get('key')
-                    comperinfo = db.get(key)
-                    comper = comperinfo.user
                     
                     event_type = self.request.get('event_key')
                     index = 0
@@ -922,7 +922,7 @@ class ViewReqs(webapp.RequestHandler):
                                      index = index,
                                      boardtype = event_info['board'],
                                      eventtype = event_info['event'],
-                                     status = Comp.VERIFIED,
+                                     status = Comp.NEW,
                                      )
             
                     new_event.put()
