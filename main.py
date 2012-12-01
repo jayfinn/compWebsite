@@ -820,19 +820,12 @@ class UserAccess(webapp.RequestHandler):
                             for key in keys:
                                 comper = db.get(key)
                                 ads = db.GqlQuery("SELECT * FROM Ad WHERE user = :1", comper)
-                                if ads.get():
-                                    for ad in ads:
-                                        ad = db.get(ad_key)
-                                        ad.delete()
+                                db.delete(ads)
                                 weeks = db.GqlQuery("SELECT * FROM Week WHERE user = :1", comper)
-                                if weeks.get():
-                                    for week in weeks:
-                                        week.delete()
+                                for week in weeks:
+                                    week.delete()
                                 events = db.GqlQuery("SELECT * FROM Event WHERE user = :1", comper)
-                                if events.get():
-                                    for event in events:
-                                        event = db.get(event_key)
-                                        event.delete()
+                                db.delete(events)
                                 comper.delete()
                         self.redirect('/user-access')
 
