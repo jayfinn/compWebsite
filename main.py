@@ -819,12 +819,11 @@ class UserAccess(webapp.RequestHandler):
                         elif submit == "Delete":
                             for key in keys:
                                 comper = db.get(key)
-                                ads = db.GqlQuery("SELECT * FROM Ad WHERE user = :1", comper)
+                                ads = db.GqlQuery("SELECT * FROM Ad WHERE user = :1", comper.user)
                                 db.delete(ads)
-                                weeks = db.GqlQuery("SELECT * FROM Week WHERE user = :1", comper)
-                                for week in weeks:
-                                    week.delete()
-                                events = db.GqlQuery("SELECT * FROM Event WHERE user = :1", comper)
+                                weeks = db.GqlQuery("SELECT * FROM Week WHERE user = :1", comper.user)
+                                db.delete(weeks)
+                                events = db.GqlQuery("SELECT * FROM Event WHERE user = :1", comper.user)
                                 db.delete(events)
                                 comper.delete()
                         self.redirect('/user-access')
