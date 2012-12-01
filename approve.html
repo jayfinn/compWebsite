@@ -12,6 +12,15 @@
                 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script>
                 <script type="text/javascript" src="js/jquery.tools.min.js"></script>
                 <script type="text/javascript" src="js/form.js"></script>
+                <script language="javascript" type="text/javascript">
+                function limitText(limitField, limitCount, limitNum) {
+	            if (limitField.value.length > limitNum) {
+		            limitField.value = limitField.value.substring(0, limitNum);
+	            } else {
+		            limitCount.value = limitNum - limitField.value.length;
+	            }
+                }  
+                </script>
         </head>
 
 <body id="report" class="wufoo layout3">
@@ -58,7 +67,11 @@
                                                                 <div>{{ event.obj.editor_requested }}</div>
                                                         </td>
 							<td class="count">
-							        <div><textarea name="notes" rows="2" cols="20"></textarea></div>
+							        <div>
+                                                                <input name="notes"type="text"onKeyDown="limitText(this.form.limitedtextfield,this.form.countdown,140);
+                                                                onKeyUp="limitText(this.form.limitedtextfield,this.form.countdown,140);" maxlength="140"><br>
+                                                                <font size="1">(Max characters: 140)<br>
+								</div>
 							</td>
                                                         <td class="count">
                                                                         <input name="event_key" value="{{ event.obj.key }}" type="checkbox"/>

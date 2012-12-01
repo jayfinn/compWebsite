@@ -12,6 +12,15 @@
                 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script>
                 <script type="text/javascript" src="js/jquery.tools.min.js"></script>
                 <script type="text/javascript" src="js/form.js"></script>
+                <script language="javascript" type="text/javascript">
+                function limitText(limitField, limitCount, limitNum) {
+	            if (limitField.value.length > limitNum) {
+		            limitField.value = limitField.value.substring(0, limitNum);
+	            } else {
+		            limitCount.value = limitNum - limitField.value.length;
+	            }
+                }  
+                </script>
         </head>
 
 <body id="report" class="wufoo layout3">
@@ -26,7 +35,7 @@
 
 <div id="board-navigation">
         <table class="pgStyle1 circle5" cellspacing="0">
-                <tr>
+x                <tr>
                         <td class="c">
                                 <var>1</var>
                         </td>
@@ -78,7 +87,11 @@
                                                         </th>
                                                         <th class="count">Date Submitted</th>
                                                         <th class="count">Date Verified</th>
-                                                        <th class="count">Editor <div><textarea name="initials" rows="1" cols="3"></textarea></div></th>
+							<th class="count">Editor <div><input
+                                                        name="initials" type="text"
+                                                        onKeyDown="limitText(this.form.limitedtextfield,this.form.countdown,3);
+                                                        " onKeyUp="limitText(this.form.limitedtextfield,this.form.countdown,3);" maxlength="3"><br>
+                                                        <font size="1"></th>
                                                         <th class="count">Notes</th>
                                                         <th class="count">
 							        <form method="post" action="/add-event">
@@ -140,8 +153,12 @@
                                                         </th>
                                                         <th class="count">Date Submitted</th>
                                                         <th class="count">Date Verified</th>
-                                                        <th class="count">Editor <div><textarea name="initials" rows="1" cols="3"></textarea></div></th>
-		                                        <th class="count">Notes</th>
+                                                        <th class="count">Editor <div><input
+                                                        name="initials" type="text"
+                                                        onKeyDown="limitText(this.form.limitedtextfield,this.form.countdown,3);
+                                                        " onKeyUp="limitText(this.form.limitedtextfield,this.form.countdown,3);" maxlength="3"><br>
+                                                        <font size="1"></th>
+                                                        <th class="count">Notes</th>
                                                         <th class="count">
                                                                 <form method="post" action="/add-event">
                                                                         <input name="event_key" value="{{ event.desc.name }}" type="hidden"/>
@@ -202,7 +219,11 @@
                                                         </th>
                                                         <th class="count">Date Submitted</th>
                                                         <th class="count">Date Verified</th>
-                                                        <th class="count">Editor <div><textarea name="initials" rows="1" cols="3"></textarea></div></th>
+                                                        <th class="count">Editor <div><input
+                                                        name="initials" type="text"
+                                                        onKeyDown="limitText(this.form.limitedtextfield,this.form.countdown,3);
+                                                        " onKeyUp="limitText(this.form.limitedtextfield,this.form.countdown,3);" maxlength="3"><br>
+                                                        <font size="1"></th>
                                                         <th class="count">Notes</th>
                                                         <th class="count">
                                                                 <form method="post" action="/add-event">
@@ -264,7 +285,11 @@
                                                         </th>
                                                         <th class="count">Date Submitted</th>
                                                         <th class="count">Date Verified</th>
-                                                        <th class="count">Editor <div><textarea name="initials" rows="1" cols="3"></textarea></div></th>
+                                                        <th class="count">Editor <div><input
+                                                        name="initials" type="text"
+                                                        onKeyDown="limitText(this.form.limitedtextfield,this.form.countdown,3);
+                                                        " onKeyUp="limitText(this.form.limitedtextfield,this.form.countdown,3);" maxlength="3"><br>
+                                                        <font size="1"></th>
                                                         <th class="count">Notes</th>
                                                         <th class="count">
                                                                 <form method="post" action="/add-event">
@@ -327,7 +352,11 @@
                                                         </th>
                                                         <th class="count">Date Submitted</th>
                                                         <th class="count">Date Verified</th>
-                                                        <th class="count">Editor <div><textarea name="initials" rows="1" cols="3"></textarea></div></th>
+                                                        <th class="count">Editor <div><input
+                                                        name="initials" type="text"
+                                                        onKeyDown="limitText(this.form.limitedtextfield,this.form.countdown,3);
+                                                        " onKeyUp="limitText(this.form.limitedtextfield,this.form.countdown,3);" maxlength="3"><br>
+                                                        <font size="1"></th>
                                                         <th class="count">Notes</th>
                                                         <th class="count">
                                                                 <form method="post" action="/add-event">

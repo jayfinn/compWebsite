@@ -231,7 +231,7 @@ class AddEvent(webapp.RequestHandler):
             self.redirect(users.create_login_url(self.request.uri))
         else:
             event_type = self.request.get('event_key')
-            
+            initials = self.request.get('initials')
             index = 0
             
             i = 0
@@ -246,6 +246,7 @@ class AddEvent(webapp.RequestHandler):
                               index = index,
                               boardtype = event_info['board'],
                               eventtype = event_info['event'],
+                              editor_requested = initials,
                               status = Comp.NEW,
                               )
             
@@ -724,7 +725,6 @@ class EventFeed(webapp.RequestHandler):
                             event.submit_date = event.submit_date.replace(tzinfo=pytz.utc).astimezone(eastern)
                         if event.verify_date:
                             event.verify_date = event.verify_date.replace(tzinfo=pytz.utc).astimezone(eastern)
-                        
                         person = db.GqlQuery("SELECT * FROM UserInfo WHERE user = :1", event.user).get()
                         if person.active:
                             events.append(dict(obj=event, username=person.name, type=reqs[event.index]['name']))
@@ -763,7 +763,6 @@ class EventFeed(webapp.RequestHandler):
                             event.verify_init = info.initials
                             event.verify_date = datetime.utcnow()
                             event.notes = self.request.get("notes")
-                            event.editor_requested = self.request.get("initials")
                             
                         
                         event.put()
@@ -859,8 +858,7 @@ class ViewReqs(webapp.RequestHandler):
                         if event.submit_date:
                             event.submit_date = event.submit_date.replace(tzinfo=pytz.utc).astimezone(eastern)
                         if event.verify_date:
-                            event.verify_date = event.verify_date.replace(tzinfo=pytz.utc).astimezone(eastern)                   
-                        
+                            event.verify_date = event.verify_date.replace(tzinfo=pytz.utc).astimezone(eastern)
                         i = 0
     
                         while marks[i] <= event.index:
