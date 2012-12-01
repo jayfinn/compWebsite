@@ -907,7 +907,7 @@ class ViewReqs(webapp.RequestHandler):
                     comperinfo = db.get(key)
                     comper = comperinfo.user
                         
-                    event_type = self.request.get('new_event_key')
+                    event_type = self.request.get('event_key')
                     index = 0
             
                     i = 0
