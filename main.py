@@ -906,15 +906,15 @@ class ViewReqs(webapp.RequestHandler):
                     key = self.request.get('key')
                     comperinfo = db.get(key)
                     comper = comperinfo.user
-                        
+                    
                     event_type = self.request.get('event_key')
                     index = 0
             
                     i = 0
                     for req in reqs:
-                         if req['name'] == event_type:
-                             index = i
-                             i += 1
+                        if req['name'] == event_type:
+                            index = i
+                            i += 1
 
                     event_info = reqs[index]
             
@@ -922,7 +922,7 @@ class ViewReqs(webapp.RequestHandler):
                                      index = index,
                                      boardtype = event_info['board'],
                                      eventtype = event_info['event'],
-                                     status = Comp.NEW,
+                                     status = Comp.VERIFIED,
                                      )
             
                     new_event.put()

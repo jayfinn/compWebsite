@@ -81,7 +81,7 @@
                                                                 Notes
                                                         </th>
 							<th class="count">
-							  <form method="post" action="/add-event">
+							  <form method="post" action="/view-reqs">
 							  <input name="event_key" value="{{ event.desc.name }}" type="hidden"/>
                                                           <input class="btTxt submit" type="submit" value="Add" />
                                                           </form>
@@ -106,12 +106,6 @@
                                                                 </td>
                                                                 <td class="item count">
 								        <div>{{ item.notes }}</div>
-                                                                </td>
-								<td class="item count">
-                                                                        <form method="post" action="/del-event">
-                                                                                <input name="del_key" value="{{ item.key }}" type="hidden"/>
-                                                                                <input class="btTxt submit" type="submit" value="Delete" />
-                                                                        </form>
                                                                 </td>
                                                         </tr>
                                                 </tbody>
@@ -145,7 +139,7 @@
                                                                 Notes
                                                         </th>
 							<th class="count">
-							  <form method="post" action="/add-event">
+							  <form method="post" action="/view-reqs">
 							  <input name="event_key" value="{{ event.desc.name }}" type="hidden"/>
                                                           <input class="btTxt submit" type="submit" value="Add" />
                                                           </form>
@@ -170,12 +164,6 @@
                                                                 </td>
                                                                 <td class="item count">
 								         <div>{{ item.notes }}</div>
-                                                                </td>
-								<td class="item count">
-                                                                        <form method="post" action="/del-event">
-                                                                                <input name="del_key" value="{{ item.key }}" type="hidden"/>
-                                                                                <input class="btTxt submit" type="submit" value="Delete" />
-                                                                        </form>
                                                                 </td>
                                                         </tr>
                                                 </tbody>
@@ -209,7 +197,7 @@
                                                                 Notes
                                                         </th>
 							<th class="count">
-							  <form method="post" action="/add-event">
+							  <form method="post" action="/view-reqs">
 							  <input name="event_key" value="{{ event.desc.name }}" type="hidden"/>
                                                           <input class="btTxt submit" type="submit" value="Add" />
                                                           </form>
@@ -235,13 +223,7 @@
                                                                 <td class="item count">
 								        <div>{{ item.notes }}</div>
                                                                 </td>
-								<td class="item count">
-                                                                        <form method="post" action="/del-event">
-                                                                                <input name="del_key" value="{{ item.key }}" type="hidden"/>
-                                                                                <input class="btTxt submit" type="submit" value="Delete" />
-                                                                        </form>
-                                                                </td>
-                                                        </tr>
+							 </tr>
                                                 </tbody>
                                                 {% endfor %}
                                         {% endfor %}
@@ -273,7 +255,7 @@
                                                                 Notes
                                                         </th>
 							<th class="count">
-							  <form method="post" action="/add-event">
+							  <form method="post" action="/view-reqs">
 							  <input name="event_key" value="{{ event.desc.name }}" type="hidden"/>
                                                           <input class="btTxt submit" type="submit" value="Add" />
                                                           </form>
@@ -299,13 +281,7 @@
                                                                 <td class="item count">
 								        <div>{{ item.notes }}</div>
                                                                 </td>
-								<td class="item count">
-                                                                        <form method="post" action="/del-event">
-                                                                                <input name="del_key" value="{{ item.key }}" type="hidden"/>
-                                                                                <input class="btTxt submit" type="submit" value="Delete" />
-                                                                        </form>
-                                                                </td>
-                                                        </tr>
+							 </tr>
                                                 </tbody>
                                                 {% endfor %}
                                         {% endfor %}
@@ -338,7 +314,7 @@
                                                                 Notes
                                                         </th>
 							<th class="count">
-							  <form method="post" action="/add-event">
+							  <form method="post" action="/view-reqs">
 							  <input name="event_key" value="{{ event.desc.name }}" type="hidden"/>
                                                           <input class="btTxt submit" type="submit" value="Add" />
                                                           </form>
@@ -363,12 +339,6 @@
                                                                 </td>
                                                                 <td class="item count">
 								        <div>{{ item.notes }}</div>
-                                                                </td>
-								<td class="item count">
-                                                                        <form method="post" action="/del-event">
-                                                                                <input name="del_key" value="{{ item.key }}" type="hidden"/>
-                                                                                <input class="btTxt submit" type="submit" value="Delete" />
-                                                                        </form>
                                                                 </td>
                                                         </tr>
                                                 </tbody>
